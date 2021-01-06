@@ -1,0 +1,3 @@
+include ':maintest'
+include ':app'
+rootProject.name = "CardGames"

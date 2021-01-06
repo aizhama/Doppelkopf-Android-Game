@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:background="@drawable/ic_launcher_background"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    tools:context="MainActivity">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/playerone"
+            android:layout_width="97dp"
+            android:layout_height="74dp"
+            android:layout_marginBottom="180dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/ui_attributes"
+            android:src="@drawable/playerone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.937"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/playertwo"
+            android:layout_width="84dp"
+            android:layout_height="68dp"
+            android:contentDescription="@string/ui_attributes"
+            android:src="@drawable/playertwo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.274" />
+
+        <ImageView
+            android:id="@+id/playertree"
+            android:layout_width="97dp"
+            android:layout_height="77dp"
+            android:layout_marginTop="52dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/ui_attributes"
+            android:src="@drawable/playertree"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/playerfour"
+            android:layout_width="86dp"
+            android:layout_height="74dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/ui_attributes"
+            android:src="@drawable/playerfour"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.275" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardsLayout"
+            android:layout_width="215dp"
+            android:layout_height="306dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.535"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.486">
+
+            <ImageView
+                android:id="@+id/card_top"
+                android:layout_width="46dp"
+                android:layout_height="77dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_attributes"
+                android:scaleType="centerInside"
+                android:src="@drawable/herzass"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="77dp">
+
+                <ImageView
+                    android:id="@+id/startPlayer"
+                    android:layout_width="13dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="70dp"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/start"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.303" />
+
+                <Button
+                    android:id="@+id/start"
+                    android:layout_width="79dp"
+                    android:layout_height="37dp"
+                    android:contentDescription="@string/ui_attributes"
+                    android:text="@string/start"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.496"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.634" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/card_right"
+                android:layout_width="43dp"
+                android:layout_height="88dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_attributes"
+                android:scaleType="centerInside"
+                android:src="@drawable/karoass"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/card_left"
+                android:layout_width="51dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_attributes"
+                android:scaleType="centerInside"
+                android:src="@drawable/karokonig"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.482" />
+
+            <ImageView
+                android:id="@+id/card_bottom"
+                android:layout_width="48dp"
+                android:layout_height="103dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_attributes"
+                android:scaleType="centerInside"
+                android:src="@drawable/kreuzneun"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TableLayout
+            android:layout_width="322dp"
+            android:layout_height="168dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/handCard_1"
+                    android:layout_width="52dp"
+                    android:layout_height="99dp"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_2"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_3"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_4"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_5"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_6"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/handCard_7"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_8"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_9"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_10"
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_11"
+                    android:layout_width="52dp"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+                <ImageView
+                    android:id="@+id/handCard_12"
+                    android:layout_width="52dp"
+                    android:contentDescription="@string/ui_attributes"
+                    android:src="@drawable/herzass" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>
