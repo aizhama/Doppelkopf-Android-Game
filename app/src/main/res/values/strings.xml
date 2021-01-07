@@ -11,4 +11,7 @@
     <string name="hello_second_fragment"> Start Projekt. Arg: %1$s</string>
     <string name="ui_attributes">ui_attributes</string>
     <string name="start">Start</string>
+    <string name="playerleft">PlayerLeft</string>
+    <string name="playertop">playertop</string>
+    <string name="playerright">playerRight</string>
 </resources>

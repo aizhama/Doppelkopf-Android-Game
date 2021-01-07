@@ -11,6 +11,11 @@ public class Card {
     private String cardName;
     private Image cardImage;
     private int id;
+    private int value;
+    private @DrawableRes int resId;
+    private int power;
+    private boolean trump;
+
     private PointF location;
     private float mX;
     private float mY;
@@ -58,77 +63,76 @@ public class Card {
 
     Suits suit;     //varible suit
 
-    //Contructor
-    public Card( Suits suit) {
-
+    //Contructor 1
+    public Card( Suits suit, int value, @DrawableRes int  resId, int power, boolean trump) {
         this.suit = suit;
         this.cardName=suit.toString();
+        this.value =value;
+        this.resId=resId;
+        this.power=power;
+        this.trump=trump;
     }
 
-    //Contructor
+    //Contructor 2
     public Suits getSuit() {
         return suit;
     }
 
-    //Contructor
+    //Contructor 3
     public Card (PointF location, float mX, float mY){
         mX = 1;
         mY = 1;
     }
-
-    public String getCardName() {
-        return cardName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public int getValue() {
         int value = 0;
         switch (getSuit()) {
-            case KreuzDame:
-            case PikDame:
-            case HerzDame:
-            case KaroDame:
-                value = 3;
-                break;
-            case KreuzBube:
-            case PikBube:
-            case HerzBube:
-            case KaroBube:
-                value = 2;
-                break;
-            case KreuzAss:
-            case PikAss:
-            case HerzAss:
-            case KaroAss:
-                value = 11;
-                break;
-            case KreuzZehn:
-            case PikZehn:
-            case HerzZehn:
-            case KaroZehn:
-                value = 10;
-                break;
-            case KreuzKonig:
-            case PikKonig:
-            case HerzKonig:
-            case KaroKonig:
-                value=4;
-                break;
             case KreuzNeun:
             case PikNeun:
             case HerzNeun:
             case KaroNeun:
                 value = 0;
                 break;
+
+            case KreuzBube:
+            case PikBube:
+            case HerzBube:
+            case KaroBube:
+                value = 2;
+                break;
+
+            case KreuzDame:
+            case PikDame:
+            case HerzDame:
+            case KaroDame:
+                value = 3;
+                break;
+
+            case KreuzKonig:
+            case PikKonig:
+            case HerzKonig:
+            case KaroKonig:
+                value=4;
+                break;
+
+            case KreuzZehn:
+            case PikZehn:
+            case HerzZehn:
+            case KaroZehn:
+                value = 10;
+                break;
+
+            case KreuzAss:
+            case PikAss:
+            case HerzAss:
+            case KaroAss:
+                value = 11;
+                break;
+
             default:
                 break;
         }
         return value;
     }
-
     public @DrawableRes int getResId() {
         switch (getSuit()){
             case KreuzDame:
@@ -184,16 +188,26 @@ public class Card {
         System.out.println("ERROR: This should never happen!");
         return R.drawable.end;
     }
+    public enum CardsPower{
+
+
+    }
     public void setLocation(float x, float y){
         mX= x;
         mY=y;
     }
-
+    public String getCardName() {
+        return cardName;
+    }
+    public int getId() {
+        return id;
+    }
     public String toString() {
         return cardName + getSuit();
         //getSuit() + " " +
         //                "cardName: " +
     }
+
 }
 
 
