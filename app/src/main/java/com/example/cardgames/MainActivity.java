@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private Player player1 = new Player("Fabs");
+    private Player humanPlayer = new Player("Fabs");
     private Player player2 = new Player("Aida");
     private Player player3 = new Player("Aigul");
     private Player player4 = new Player("Guljan");
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     List<Card> handCards;
     List<Card> nUserTop, nUserLeft, nUserRight;
     TextView resultsFirstRound, playerLeft, playerTop, playerRight;
-    GameManager gManager = new GameManager(card_left, card_top, card_right, card_bottom);
+    GameManager gManager = new GameManager(humanPlayer, player2, player3, player4);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         playerRight = (TextView) findViewById(R.id.playerRight);
 
 
-
         HashMap<ImageView, Card> map = new HashMap<ImageView, Card>();
         map.put(handCard_1, handCards.get(0));
         map.put(handCard_2, handCards.get(1));
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         playCards();
-        gManager.firstRound(card_bottom, card_top, card_left, card_right);
+        //***********gManager.firstRound(card_bottom, card_top, card_left, card_right);
 
         List<ImageView> cardList = new LinkedList<>();
         Collections.addAll(cardList, handCard_1, handCard_2, handCard_3, handCard_4, handCard_5, handCard_6, handCard_7, handCard_8, handCard_9, handCard_10, handCard_11, handCard_12);
@@ -117,13 +116,13 @@ public class MainActivity extends AppCompatActivity {
         final int size = 48;
         Card[] deckOfCards = new Card[size];
         StackList deck = new StackList(deckOfCards);
-        deck.dealCards(player1, player2, player3, player4);
-        handCards = player1.getPlayCards();
+        deck.dealCards(humanPlayer, player2, player3, player4);
+        handCards = humanPlayer.getPlayCards();
         nUserTop = player2.getPlayCards();
         nUserLeft = player3.getPlayCards();
         nUserRight = player4.getPlayCards();
 
-        System.out.println(player1.showPlayerCards() + player1.getGamerName());
+        System.out.println(humanPlayer.showPlayerCards() + humanPlayer.getGamerName());
         System.out.println(player2.showPlayerCards() + player2.getGamerName());
         System.out.println(player3.showPlayerCards() + player3.getGamerName());
         System.out.println(player4.showPlayerCards() + player4.getGamerName());
@@ -144,41 +143,48 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         switch (v.getId()) {
                             case R.id.card_left:
-                                Card nextCardL = player1.getNextCard();
-                                if (nextCardL != null) {
-                                    card_left.setImageResource(nextCardL.getResId());
-                                    //gManager.PlayerPlayedACard(player1, nextCardL);
-
-                                } else {
-                                    card_left.setVisibility(View.INVISIBLE);
+                                if (gManager.getPlayer2().equals(player2)) {
+                                    System.out.println("if currentPlayer is equals player2" + gManager.getPlayer2().equals(player2));
+                                    Card nextCardL = player2.getNextCard();
+                                    if (nextCardL != null) {
+                                        card_left.setImageResource(nextCardL.getResId());
+                                        gManager.playerPlayedACard(player2, nextCardL);
+                                    } else {
+                                        card_left.setVisibility(View.INVISIBLE);
+                                    }
+                                }else{
+                                    card_left.setPressed(false);
+                                    System.out.println("jetzt Player 3 ist drann");
                                 }
                                 break;
                             case R.id.card_top:
-                                Card nextCardT = player2.getNextCard();
-                                if (nextCardT != null) {
-                                    card_top.setImageResource(nextCardT.getResId());
-                                    if (v.getId() == R.id.card_top) {
-                                        if (isOnClicked) {
-                                            MessageBox("Spieler 3 hat schon seine Karte ausgespielt");
-                                            isOnClicked = false;
-                                        }
+                                if (gManager.getPlayer3().equals(player3)) {
+                                    System.out.println("if currentPlayer is equals player3" + gManager.getPlayer3().equals(player3));
+                                    Card nextCardT = player3.getNextCard();
+                                    if (nextCardT != null) {
+                                        card_top.setImageResource(nextCardT.getResId());
+                                        gManager.playerPlayedACard(player3, nextCardT);//nur Message bei jeden Raund!
+                                    } else {
+                                        card_top.setVisibility(View.INVISIBLE);
                                     }
-                                } else {
-                                    card_top.setVisibility(View.INVISIBLE);
+                                }else {
+                                    card_top.setPressed(false);
+                                    System.out.println("jetzt Player 4 ist drann");
                                 }
                                 break;
                             case R.id.card_right:
-                                Card nextCardR = player3.getNextCard();
-                                if (nextCardR != null) {
-                                    card_right.setImageResource(nextCardR.getResId());
-                                    if (v.getId() == R.id.card_right) {
-                                        if (isOnClicked) {
-                                            MessageBox("Spieler 4 hat schon seine Karte ausgespielt");
-                                            isOnClicked = false;
-                                        }
+                                if (gManager.getPlayer4().equals(player4)) {
+                                    System.out.println("if currentPlayer is equals player4" + gManager.getPlayer4().equals(player4));
+                                    Card nextCardR = player4.getNextCard();
+                                    if (nextCardR != null) {
+                                        card_right.setImageResource(nextCardR.getResId());
+                                        gManager.playerPlayedACard(player4, nextCardR);
+                                    } else {
+                                        card_right.setVisibility(View.INVISIBLE);
                                     }
-                                } else {
-                                    card_right.setVisibility(View.INVISIBLE);
+                                }else {
+                                    card_right.setPressed(false);
+                                    System.out.println(" jetzt Player 1 ist drann");
                                 }
                                 break;
                         }
@@ -192,26 +198,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void onSavedInstanceState(Bundle savedInstanceState){
+    public void onSavedInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
     }
-
-    private void playCardTest() {
-        //boolean isCliked=false;
-        ImageView card_image = card_left;
-        card_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Card nextCard = player1.getNextCard();
-                if (nextCard != null) {
-                    card_image.setImageResource(nextCard.getResId());
-                } else {
-                    card_image.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-    }
-
-
 }

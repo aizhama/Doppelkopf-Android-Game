@@ -133,6 +133,56 @@ public class Card {
         }
         return value;
     }
+
+    public String getCardName() {
+        return cardName;
+    }
+
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
+
+    public Image getCardImage() {
+        return cardImage;
+    }
+
+    public void setCardImage(Image cardImage) {
+        this.cardImage = cardImage;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getResId() {
+        return resId;
+    }
+
+    public void setResId(int resId) {
+        this.resId = resId;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public boolean isTrump() {
+        return trump;
+    }
+
+    public void setTrump(boolean trump) {
+        this.trump = trump;
+    }
+
+    public void setSuit(Suits suit) {
+        this.suit = suit;
+    }
+
+    /*
     public @DrawableRes int getResId() {
         switch (getSuit()){
             case KreuzDame:
@@ -188,20 +238,12 @@ public class Card {
         System.out.println("ERROR: This should never happen!");
         return R.drawable.end;
     }
+    */
     public enum CardsPower{
+    }
 
 
-    }
-    public void setLocation(float x, float y){
-        mX= x;
-        mY=y;
-    }
-    public String getCardName() {
-        return cardName;
-    }
-    public int getId() {
-        return id;
-    }
+
     public String toString() {
         return cardName + getSuit();
         //getSuit() + " " +

@@ -87,10 +87,6 @@ public class StackList {
     public StackList(Card[] deck) {
         this.deck = deck;
     }
-
-    public Card[] getDeck() {
-        return deck;
-    }
     public void dealCards(Player player1, Player player2, Player player3, Player player4) {
         if(deck==null) {
             System.out.println("Erst initialisieren!");
@@ -114,4 +110,17 @@ public class StackList {
         }
     }
 
+    public int getSize() {
+        return size;
+    }
+    public void setSize(int size) {
+        this.size = size;
+    }
+    public Card[] getDeck() {
+        return deck;
+    }
+
+    public void setDeck(Card[] deck) {
+        this.deck = deck;
+    }
 }

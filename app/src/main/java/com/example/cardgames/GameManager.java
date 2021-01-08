@@ -11,109 +11,84 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 public class GameManager {
-    private String gameName;
-    private boolean isOnClicked = false;
-    private boolean isPlayedCard = false;
-    private ImageButton start, end;
-    private List<ImageView> menuButtons;
+    private boolean isClicked = false;
+    private int cardCounter = 0;
+    private Card nextCard_X;
     private int countOfPoints = 0;
+    private Player nPlayer;
+    private Player currentPlayer;
+    private Player humanPlayer;
+    private Player player2;
+    private Player player3;
+    private Player player4;
     HashMap<ImageView, Card> isPlayedCardsMap = new HashMap<ImageView, Card>();
-    List<ImageView> playerBtn = new LinkedList<>();
-    Player player = new Player("Test Player");
 
-    ImageView key;
-    private ImageView card_left;
-    private ImageView card_top;
-    private ImageView card_right;
-    private ImageView card_bottom;
+    public GameManager(@NonNull Player humanPlayer, @NonNull Player player2, @NonNull Player player3, @NonNull Player player4) {
+        this.humanPlayer = humanPlayer;
+        this.player2 = player2;
+        this.player3 = player3;
+        this.player4 = player4;
 
-    public GameManager(ImageView card_left, ImageView card_top, ImageView card_right, ImageView card_bottom){
-        this.card_left= card_left;
-        this.card_top= card_top;
-        this.card_right= card_right;
-        this.card_bottom= card_bottom;
+        currentPlayer = this.humanPlayer;
+        humanPlayer.setNextPlayer(player2);
+        player2.setNextPlayer(player3);
+        player3.setNextPlayer(player4);
+        player4.setNextPlayer(humanPlayer);
+
 
     }
 
-    public int firstRound(ImageView v, ImageView v2, ImageView v3, ImageView v4) {
-        isOnClicked = false;
-        switch (v.getId()) {
-            case R.id.card_left:
-                v = card_left;
-                if (v.isPressed()) {
-                    countOfPoints++;
-                    System.out.println("Counter from Button card_left" + v);
-                    v.setImageResource(R.drawable.end);
-                    isOnClicked = true;
-                }
-                break;
+    public void playerPlayedACard(Player nPlayer, Card nextCard_X) {
+        //mit Konstruktor ist festgelegt, dass ein spieler immer auf nächste zeigt
+        //currentReference ist zeiger immer auf den gerade spielte Spieler
+        //mit currentSpieler prüfen ob ist ein Player jetzt dran
 
-            case R.id.card_top:
-                v2 = card_top;
-                //if (key.equals(R.id.card_top)) {
-                if (v2.isPressed()) {
-                    countOfPoints++;
-                    System.out.println("Counter from Button card_top" + v2);
-                    v2.setImageResource(R.drawable.end);
-                    isOnClicked = true;
-                }
-                //}
-                break;
+        //im Ui prüfen ob gerade(currentPLayer ist dran) ->nur currentPlayer darf in der Zeit zu clicken
 
-            case R.id.card_right:
-                v3 = card_right;
-                //if (key.equals(R.id.card_right)) {
-                if (v3.isPressed()) {
-                    countOfPoints++;
-                    System.out.println("Counter from Button card_right" + v3);
-                    v3.setImageResource(R.drawable.end);
-                    isOnClicked = true;
-                }
-                break;
-
-            case R.id.card_bottom:
-                v4 = card_bottom;
-                //if (key.equals(R.id.card_right)) {
-                if (v4.isPressed()) {
-                    countOfPoints++;
-                    System.out.println("Counter from Button card_right" + v4);
-                    v4.setImageResource(R.drawable.end);
-                    isOnClicked = true;
-                }
-                if (countOfPoints == 4) {
-
-                    System.out.println("First Round is finished!");
-
-                    //onPuase()
-
-                    //score count
-                    //message player winn
-                    //write in hashmaps the isPlayed card with key playerName and value cardValue
-                    //butons activate(){}
-                    //}
-                }
-                break;
+        cardCounter++;
+        if (cardCounter > 3) {
+            System.out.println("The Round is finished!");
         }
-        return countOfPoints;
+        //soreThePoints();
+        //sout("wer hat den Stich gwonnen!)
+        //denStichinPlayerPointsTableEintragen();
     }
 
-    public boolean isOnClicked() {
-        return isOnClicked;
+    public boolean isClicked() {
+        return isClicked;
     }
 
-    public void setOnClicked(boolean onClicked) {
-        isOnClicked = onClicked;
+    public void setClicked(boolean clicked) {
+        isClicked = clicked;
+    }
+
+    public int getCardCounter() {
+        return cardCounter;
+    }
+
+    public void setCardCounter(int cardCounter) {
+        this.cardCounter = cardCounter;
+    }
+
+    public Card getNextCard_X() {
+        return nextCard_X;
+    }
+
+    public void setNextCard_X(Card nextCard_X) {
+        this.nextCard_X = nextCard_X;
     }
 
     public int getCountOfPoints() {
@@ -122,6 +97,62 @@ public class GameManager {
 
     public void setCountOfPoints(int countOfPoints) {
         this.countOfPoints = countOfPoints;
+    }
+
+    public Player getnPlayer() {
+        return nPlayer;
+    }
+
+    public void setnPlayer(Player nPlayer) {
+        this.nPlayer = nPlayer;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public Player getHumanPlayer() {
+        return humanPlayer;
+    }
+
+    public void setHumanPlayer(Player humanPlayer) {
+        this.humanPlayer = humanPlayer;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public void setPlayer2(Player player2) {
+        this.player2 = player2;
+    }
+
+    public Player getPlayer3() {
+        return player3;
+    }
+
+    public void setPlayer3(Player player3) {
+        this.player3 = player3;
+    }
+
+    public Player getPlayer4() {
+        return player4;
+    }
+
+    public void setPlayer4(Player player4) {
+        this.player4 = player4;
+    }
+
+    public HashMap<ImageView, Card> getIsPlayedCardsMap() {
+        return isPlayedCardsMap;
+    }
+
+    public void setIsPlayedCardsMap(HashMap<ImageView, Card> isPlayedCardsMap) {
+        this.isPlayedCardsMap = isPlayedCardsMap;
     }
 }
 
