@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);//SaveInstance State
         setContentView(R.layout.activity_main);
-
         startGame();
         playerone = (ImageView) findViewById(R.id.playerone);
         playertwo = (ImageView) findViewById(R.id.playertwo);
