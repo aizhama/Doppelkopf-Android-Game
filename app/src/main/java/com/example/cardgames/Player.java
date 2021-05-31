@@ -7,28 +7,22 @@ import java.util.List;
 
 public class Player {
     private String gamerName;
-    private int id;
-    private int cardIndex = 0;
-    Card[] card = new Card[12];
     private List<Card> deckOfPlayCards = new LinkedList<Card>();
+    Card nextCard;
     private Player nextPlayer;
-    private Player nPlayer;
-    private boolean isPlayed=false;
-    private Card nextPlayerCard = null;
+    private List<Stich> listeDerGesamtStiche;
     private GameManager gameManager;
+    Stich ausgespielteKarte;
 
-
-    public Player(String gamerName){
-        this.gamerName=gamerName;
+    public Player(String gamerName) {
+        this.gamerName = gamerName;
     }
+
     public Player(Player nextPlayer, List<Card> playCards) {
         this.nextPlayer = nextPlayer;
-        this.deckOfPlayCards=playCards;
+        this.deckOfPlayCards = playCards;
     }
-    public Player( String gamerName, boolean isPlayed) {
-        this.gamerName = gamerName;
-        this.isPlayed=isPlayed;
-    }
+
     public List<Card> showPlayerCards() {
         for (Card card : deckOfPlayCards) {
             if (card != null) {
@@ -38,28 +32,35 @@ public class Player {
         return deckOfPlayCards;
     }
 
-
-    //Member variable GameManager um ausgespielte Karte zu holen
     public Card getNextCard() {
-        //welcher Karte wurde vorher ausgespielt--- //gameManager.getNextCard_X();
-        //richtig bedienen, karte an die Hand sortieren auf aufSteigend-> wenn T_Karte-> TrumpK wenn F_K-> F_K
+        //welcher Karte wurde vorher ausgespielt
+        //richtig bedienen, wenn T_Karte-> TrumpK wenn F_K-> F_K
+        int indexOfCards = 0;
+        Stich ausgespieltenKartenTest = gameManager.getnPlayer().ausgespielteKarte;
+        System.out.println("Ausgespielten Karten" + ausgespieltenKartenTest +"Teeeeeeeeeeeeeeeeeeeeeeeeeeeeeest");
+        if (gameManager.stich.getCardFirst() != null) {
 
-        //gameManager.getNextCard_X();
-        if ( cardIndex > -1 && cardIndex < deckOfPlayCards.size()) {
-            nextPlayerCard = deckOfPlayCards.get(cardIndex);
-            cardIndex++;
-            isPlayed=true;
+            if (gameManager.stich.getCardFirst().isTrump() == true) {
+                System.out.println("Is trumpf" + gameManager.stich.getCardFirst());
+                nextCard = deckOfPlayCards.get(4);
+                indexOfCards++;
+
+            } else if (gameManager.stich.getCardSecond().isTrump() == true) {
+                System.out.println("Is trumpf" + gameManager.stich.getCardSecond());
+                nextCard = deckOfPlayCards.get(4);
+                indexOfCards++;
+            }
         }
-        return nextPlayerCard;
+        return nextCard;
     }
 
-    public Card getNextPlayerCard() {
-        return nextPlayerCard;
+    public void addAStich(Stich stich) {
+        listeDerGesamtStiche.add(stich);
     }
 
-    public void setNextPlayerCard(Card nextPlayerCard) {
-        this.nextPlayerCard = nextPlayerCard;
-    }
+
+
+
 
     public String getGamerName() {
         return gamerName;
@@ -69,36 +70,12 @@ public class Player {
         this.gamerName = gamerName;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getCardIndex() {
-        return cardIndex;
-    }
-
-    public void setCardIndex(int cardIndex) {
-        this.cardIndex = cardIndex;
-    }
-
-    public Card[] getCard() {
-        return card;
-    }
-
-    public void setCard(Card[] card) {
-        this.card = card;
-    }
-
-    public List<Card> getPlayCards() {
+    public List<Card> getDeckOfPlayCards() {
         return deckOfPlayCards;
     }
 
-    public void setPlayCards(List<Card> playCards) {
-        this.deckOfPlayCards = playCards;
+    public void setDeckOfPlayCards(List<Card> deckOfPlayCards) {
+        this.deckOfPlayCards = deckOfPlayCards;
     }
 
     public Player getNextPlayer() {
@@ -109,68 +86,20 @@ public class Player {
         this.nextPlayer = nextPlayer;
     }
 
-    public boolean isPlayed() {
-        return isPlayed;
+    public List<Stich> getListeDerGesamtStiche() {
+        return listeDerGesamtStiche;
     }
 
-    public void setPlayed(boolean played) {
-        isPlayed = played;
+    public void setListeDerGesamtStiche(List<Stich> listeDerGesamtStiche) {
+        this.listeDerGesamtStiche = listeDerGesamtStiche;
+    }
+
+    public GameManager getGameManager() {
+        return gameManager;
+    }
+
+    public void setGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 }
-    /***
-    public @DrawableRes int dealScoreCount(Player card1, Player card2, Player card3 , Player card4){
-        //po cahsovoi strelke go
-        //stop wenn alle ein Mal karte geworfen haben
-        //berechnen > with switch cards from players to compare
-        // use getsuit() find
-        int returnValue=0;
-        Card cardValue;
-        switch (cardValue.getValue())
 
-        }
-
-        return returnValue;
-    }
- */
-
-    /***
-     * getCardCount(){}
-     * sortCard(){}
-     */
-
-
-
-
-/***
- * sortCard(){
- * unterscheiden();
- * return sortedKarte;
- * }
- *
- * bedienen(){
- * sortCard();
- * unterscheiden();
- * checkChance();
- * findPair();
- * return
- * stichen( die kleinste F or T);
- * }
- *
- *
- * getCard(){
- * entscheidenObKarteBehältenWill();
- * return ------
- * }
- *
- * findPair(){}
- *
- *
- * gameEnd(){}
- *
- *
- * showCards(){}
- *
- *
- * getValueOfHands(int){}
- *
- */

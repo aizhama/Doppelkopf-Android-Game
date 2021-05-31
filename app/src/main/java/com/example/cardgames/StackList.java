@@ -15,17 +15,6 @@ public class StackList {
 
     public Card[] initializeDeck() {
         deck = new Card[size];
-        /*
-        Card.Suits[]values= Card.Suits.values();
-        for (int i = 0; i < size; i++) {
-            if(i<24)
-                deck[i]=new Card(values[i]);
-            else
-                deck[i]=new Card(values[i-24]);
-        }
-        */
-       // System.out.println(deck.toString());
-
         deck[0]=new Card(Card.Suits.HerzZehn,10, R.drawable.herzzehn,14,true);
         deck[1]=new Card(Card.Suits.HerzZehn,10, R.drawable.herzzehn,14,true);
 
@@ -96,13 +85,13 @@ public class StackList {
         int count = 1;
         for (int i = 0; i < deck.length; i++) {
             if ((count > 36)) {
-                player1.getPlayCards().add(deck[i]);
+                player1.getDeckOfPlayCards().add(deck[i]);
             } else if (count >24) {
-                player2.getPlayCards().add(deck[i]);
+                player2.getDeckOfPlayCards().add(deck[i]);
             } else if (count > 12) {
-                player3.getPlayCards().add(deck[i]);
+                player3.getDeckOfPlayCards().add(deck[i]);
             } else if (count <= 12) {
-                player4.getPlayCards().add(deck[i]);
+                player4.getDeckOfPlayCards().add(deck[i]);
             } else {
                 System.out.println("Die Karten sind verteilt!");
             }
@@ -113,9 +102,11 @@ public class StackList {
     public int getSize() {
         return size;
     }
+
     public void setSize(int size) {
         this.size = size;
     }
+
     public Card[] getDeck() {
         return deck;
     }
