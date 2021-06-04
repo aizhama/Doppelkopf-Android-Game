@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,9 +33,11 @@ public class GameManager {
     private Player playerT;
     private Player playerR;
     private Player winPLayer;
-    private Card ausgespielteKarte;
-    private List<Card>listDerStichen = new LinkedList<>();
+
+    private List<Card> listDerStichen = new LinkedList<>();
     Stich stich;
+    private Card ausgespielteKarte;
+
 
     public GameManager(@NonNull Player humanPlayer, @NonNull Player player2, @NonNull Player player3, @NonNull Player player4) {
         this.humanPlayer = humanPlayer;
@@ -49,29 +52,34 @@ public class GameManager {
         player4.setNextPlayer(humanPlayer);
     }
 
-    public void playerPlayedACard(Player nPlayer, Card ausgespielteKarte) {
+    public Stich playerPlayedACard(Player nPlayer, Card ausgespielteKarte) {
         //mit Konstruktor ist festgelegt, dass ein spieler immer auf nächste zeigt
         //currentReference ist zeiger immer auf den gerade spielte Spieler
         //mit currentSpieler prüfen ob ist ein Player jetzt dran
         //im Ui prüfen ob gerade(currentPLayer ist dran) ->nur currentPlayer darf in der Zeit zu clicken
         //in classe Stich wenn 4 wurde ausgespielt packen
-        //und zu dem wer hat die grßte Karte ausgespielt hinzufügen
-        if(stich.getCardFirst()!=null)
+        //und zu dem wer hat die gr0ßte Karte ausgespielt hinzufügen
+
+        if (stich.getCardFirst() != null)
             stich.setCardFirst(ausgespielteKarte);
-        else if(stich.getCardSecond()!=null)
+        else if (stich.getCardSecond() != null)
             stich.setCardSecond(ausgespielteKarte);
-        else if(stich.getCardThird()!=null)
+        else if (stich.getCardThird() != null)
             stich.setCardThird(ausgespielteKarte);
-        else if(stich.getCardFourth()!=null)
-        {
+        else if (stich.getCardFourth() != null) {
             stich.setCardFourth(ausgespielteKarte);
             winPLayer.addAStich(stich);
-                System.out.println("The Round is finished!");
-
+            System.out.println("The Round is finished!");
         }
+
         //soreThePoints();
         //sout("wer hat den Stich gwonnen!)
         //denStichinPlayerPointsTableEintragen();
+        return stich;
+    }
+
+    public void setListDerStichen(List<Card> listDerStichen) {
+        this.listDerStichen = listDerStichen;
     }
 
     public Player getnPlayer() {
@@ -140,10 +148,6 @@ public class GameManager {
 
     public List<Card> getListDerStichen() {
         return listDerStichen;
-    }
-
-    public void setListDerStichen(List<Card> listDerStichen) {
-        this.listDerStichen = listDerStichen;
     }
 
     public Stich getStich() {

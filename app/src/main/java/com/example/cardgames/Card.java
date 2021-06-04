@@ -1,16 +1,20 @@
 package com.example.cardgames;
+
 import androidx.annotation.DrawableRes;
+
+import java.lang.reflect.Type;
 
 
 public class Card {
     private String cardName;
     private int id;
     private int value;
-    private @DrawableRes int resId;
+    private @DrawableRes
+    int resId;
     private int power;
     private boolean trump;
 
-    public enum Suits {
+    public enum TypesOfCards {
         KreuzDame,
         PikDame,
         HerzDame,
@@ -41,76 +45,91 @@ public class Card {
         HerzNeun,
         KaroNeun;
     }
+
+    TypesOfCards typesOfCards;
+
+    public enum Suits {
+        Kreuz,
+        Pik,
+        Herz,
+        Karo;
+    }
+
     Suits suit;
 
+    public Suits getSuit() {
+        if (this.getTypesOfCards().equals(TypesOfCards.KreuzAss) || this.getTypesOfCards().equals(TypesOfCards.KreuzNeun) || this.getTypesOfCards().equals(TypesOfCards.KreuzZehn) ||
+                this.getTypesOfCards().equals(TypesOfCards.KreuzKonig) || this.getTypesOfCards().equals(TypesOfCards.KreuzBube) || this.getTypesOfCards().equals(TypesOfCards.KreuzDame)) {
+            return Suits.Kreuz;
+        }
+        else if (this.getTypesOfCards().equals(TypesOfCards.PikAss) || this.getTypesOfCards().equals(TypesOfCards.PikNeun) || this.getTypesOfCards().equals(TypesOfCards.PikZehn) ||
+                this.getTypesOfCards().equals(TypesOfCards.PikKonig) || this.getTypesOfCards().equals(TypesOfCards.PikBube) || this.getTypesOfCards().equals(TypesOfCards.PikDame)) {
+            return Suits.Pik;
+        }
+        else if (this.getTypesOfCards().equals(TypesOfCards.HerzAss) || this.getTypesOfCards().equals(TypesOfCards.HerzNeun) || this.getTypesOfCards().equals(TypesOfCards.HerzZehn) ||
+                this.getTypesOfCards().equals(TypesOfCards.HerzKonig) || this.getTypesOfCards().equals(TypesOfCards.HerzBube) || this.getTypesOfCards().equals(TypesOfCards.HerzDame)) {
+            return Suits.Herz;
+        }
+        else if (this.getTypesOfCards().equals(TypesOfCards.KaroAss) || this.getTypesOfCards().equals(TypesOfCards.KaroNeun) || this.getTypesOfCards().equals(TypesOfCards.KaroZehn) ||
+                this.getTypesOfCards().equals(TypesOfCards.KaroKonig) || this.getTypesOfCards().equals(TypesOfCards.KaroBube) || this.getTypesOfCards().equals(TypesOfCards.KaroDame)) {
+            return Suits.Karo;
+        }else{
+            return null;
+        }
+    }
 
-    public Card( Suits suit, int value, @DrawableRes int  resId, int power, boolean trump) {
-        this.suit = suit;
-        this.cardName=suit.toString();
-        this.value =value;
-        this.resId=resId;
-        this.power=power;
-        this.trump=trump;
+    public Card(TypesOfCards typesOfCards, Suits suit, int value, @DrawableRes int resId, int power, boolean trump, boolean fehlFarbe) {
+        this.typesOfCards = typesOfCards;
+        this.suit=suit;
+        this.cardName = typesOfCards.toString();
+        this.value = value;
+        this.resId = resId;
+        this.power = power;
+        this.trump = trump;
     }
 
     public String toString() {
-        return cardName + getSuit();
+        return "Card{" +
+                "cardName='" + cardName + '\'' +
+                ", id=" + id +
+                ", value=" + value +
+                ", resId=" + resId +
+                ", power=" + power +
+                ", trump=" + trump +
+                ", typesOfCards=" + typesOfCards +
+                ", suit=" + suit +
+                '}';
+    }
+    public boolean isTrump() {
+        return trump;
+    }
+
+    public boolean isFehlFarbe() {
+        return !isTrump();
     }
 
     public String getCardName() {
         return cardName;
     }
 
-    public void setCardName(String cardName) {
-        this.cardName = cardName;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getValue() {
         return value;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
-
     public int getResId() {
         return resId;
-    }
-
-    public void setResId(int resId) {
-        this.resId = resId;
     }
 
     public int getPower() {
         return power;
     }
 
-    public void setPower(int power) {
-        this.power = power;
-    }
-
-    public boolean isTrump() {
-        return trump;
-    }
-
-    public void setTrump(boolean trump) {
-        this.trump = trump;
-    }
-
-    public Suits getSuit() {
-        return suit;
-    }
-
-    public void setSuit(Suits suit) {
-        this.suit = suit;
+    public TypesOfCards getTypesOfCards() {
+        return typesOfCards;
     }
 }
 

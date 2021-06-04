@@ -1,18 +1,27 @@
 package com.example.cardgames;
 
-import androidx.annotation.DrawableRes;
+import android.os.Build;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.RequiresApi;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Player {
     private String gamerName;
     private List<Card> deckOfPlayCards = new LinkedList<Card>();
     Card nextCard;
+    Card nächsteKarte;
     private Player nextPlayer;
     private List<Stich> listeDerGesamtStiche;
     private GameManager gameManager;
-    Stich ausgespielteKarte;
+    Stich stich;
+    private StackList stackList;
+
 
     public Player(String gamerName) {
         this.gamerName = gamerName;
@@ -26,40 +35,79 @@ public class Player {
     public List<Card> showPlayerCards() {
         for (Card card : deckOfPlayCards) {
             if (card != null) {
+                card.getCardName();
                 System.out.println(card.getCardName());
             }
         }
         return deckOfPlayCards;
     }
 
-    public Card getNextCard() {
-        //welcher Karte wurde vorher ausgespielt
-        //richtig bedienen, wenn T_Karte-> TrumpK wenn F_K-> F_K
-        int indexOfCards = 0;
-        Stich ausgespieltenKartenTest = gameManager.getnPlayer().ausgespielteKarte;
-        System.out.println("Ausgespielten Karten" + ausgespieltenKartenTest +"Teeeeeeeeeeeeeeeeeeeeeeeeeeeeeest");
-        if (gameManager.stich.getCardFirst() != null) {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private List<Card> checkValidityOfTheCards(List<Card> anzahlDerAusgespieltenKartenInDerRunde) {
+        List<Card> listWithAValidCards = new ArrayList<>();
+        Card ersteAusgespielteKarte = anzahlDerAusgespieltenKartenInDerRunde.get(0);
 
-            if (gameManager.stich.getCardFirst().isTrump() == true) {
-                System.out.println("Is trumpf" + gameManager.stich.getCardFirst());
-                nextCard = deckOfPlayCards.get(4);
-                indexOfCards++;
+        for (Card nCard : deckOfPlayCards) {
+            if (anzahlDerAusgespieltenKartenInDerRunde.size() == 0) {
+                System.out.println("Es wurde bis jetzt noch keine Karte ausgespielt!");
+                listWithAValidCards.add(nCard);
+            } else if (anzahlDerAusgespieltenKartenInDerRunde.size() > 3) {
+                System.out.println("Error: In einer Runde können maximal 4 Karten ausgespielt werden.");
+            }
 
-            } else if (gameManager.stich.getCardSecond().isTrump() == true) {
-                System.out.println("Is trumpf" + gameManager.stich.getCardSecond());
-                nextCard = deckOfPlayCards.get(4);
-                indexOfCards++;
+            if ((ersteAusgespielteKarte.isTrump()) && (nCard.isTrump())) {
+                listWithAValidCards.add(nCard);
+
+            } else if (ersteAusgespielteKarte.isFehlFarbe() && nCard.isFehlFarbe()) {
+                if (ersteAusgespielteKarte.getSuit() == nCard.getSuit()) {
+                    listWithAValidCards.add(nCard);
+                } else {
+                    // die nCard ist trotzdem gültig, wenn der die ausgespielte Farbe nicht bedienen
+                    List<Card> existFehlFarbe = deckOfPlayCards.stream().filter(Card::isFehlFarbe).
+                            filter(suits -> suits.getSuit() == ersteAusgespielteKarte.getSuit()).collect(Collectors.toList());
+                    if (existFehlFarbe.isEmpty()) {
+                        listWithAValidCards.add(nCard);
+                    }
+                }
+            } else if ((ersteAusgespielteKarte.isTrump()) && (nCard.isFehlFarbe())) {
+                List<Card> trumpf = deckOfPlayCards.stream().filter(Card::isTrump).collect(Collectors.toList());
+                if (!trumpf.isEmpty()) {
+                    System.out.println("Das ist gerade keine gültige Karte, weil einen Trumpf Karte ist enthalten");
+                } else {
+                    //wenn Spieler keinen trumpf hat, kann er beliebiger Karte auspielen
+                    listWithAValidCards.add(nCard);
+                }
+            } else if ((ersteAusgespielteKarte.isFehlFarbe()) && (nCard.isTrump())) {
+                //nicht nur fehlfarbe sein, sondern auch die Farbe soll stimmen
+                List<Card> fehlfarbe = deckOfPlayCards.stream().
+                        filter(Card::isFehlFarbe).
+                        filter(suits -> suits.getSuit() == ersteAusgespielteKarte.getSuit()).collect(Collectors.toList());
+                if (!fehlfarbe.isEmpty()) {
+                    System.out.println("Das ist gerade keine gültige Karte, weil einen Fehlfarbe Karte ist enthalten");
+                } else {
+                    listWithAValidCards.add(nCard);
+                }
             }
         }
-        return nextCard;
+        return listWithAValidCards;
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Card bedienen() {
+        List<Card> stichList = stich.getAllCards();
+        List<Card> listWithAValidCards = checkValidityOfTheCards(stichList);
+        //nächsteKarte=listWithAValidCards.stream().findAny().orElse(null);
+        for (Card iterACard : listWithAValidCards) {
+            nächsteKarte = iterACard;
+        }
+        return nächsteKarte;
+    }
+
 
     public void addAStich(Stich stich) {
         listeDerGesamtStiche.add(stich);
     }
-
-
-
 
 
     public String getGamerName() {
