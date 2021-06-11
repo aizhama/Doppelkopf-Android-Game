@@ -1,5 +1,6 @@
 package com.example.cardgames;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 
 import java.util.LinkedList;
@@ -11,21 +12,26 @@ public class Stich {
     private Card cardThird;
     private Card cardFourth;
 
-    public List<Card> getAllCards(){
-        List<Card> list=new LinkedList<>();
-        if(getCardFirst()!=null)
-            list.add(getCardFirst());
-        if(getCardSecond()!=null)
-            list.add(getCardSecond());
-        if(getCardThird()!=null)
-            list.add(getCardThird());
-        if(getCardFourth()!=null)
-            list.add(getCardFourth());
-        return list;
+    public List<Card> getAllCards() {
+        List<Card> stichList = new LinkedList<>();
+        if (getCardFirst() != null) {
+            stichList.add(getCardFirst());
+        } else if (getCardSecond() != null) {
+            stichList.add(getCardSecond());
+        } else if (getCardThird() != null) {
+            stichList.add(getCardThird());
+        } else if (getCardFourth() != null) {
+            stichList.add(getCardFourth());
+        }else{
+            System.out.println("Es wurde noch keinen Karten ausgespielt");
+        }
+        return stichList;
+    }
+    public Stich(){
     }
 
-    public int getPoints(){
-        return getCardFirst().getValue()+getCardSecond().getValue()+getCardThird().getValue()+ getCardFourth().getValue();
+    public int getPoints() {
+        return getCardFirst().getValue() + getCardSecond().getValue() + getCardThird().getValue() + getCardFourth().getValue();
     }
 
     public Card getCardFirst() {

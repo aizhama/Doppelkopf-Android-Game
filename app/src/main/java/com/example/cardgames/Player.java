@@ -19,7 +19,7 @@ public class Player {
     private Player nextPlayer;
     private List<Stich> listeDerGesamtStiche;
     private GameManager gameManager;
-    Stich stich;
+    Stich stich= new Stich();
     private StackList stackList;
 
 
@@ -43,8 +43,12 @@ public class Player {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private List<Card> checkValidityOfTheCards(List<Card> anzahlDerAusgespieltenKartenInDerRunde) {
+    public List<Card> checkValidityOfTheCards(List<Card> anzahlDerAusgespieltenKartenInDerRunde) {
         List<Card> listWithAValidCards = new ArrayList<>();
+        if(anzahlDerAusgespieltenKartenInDerRunde.isEmpty()){
+            return deckOfPlayCards;
+        }
+
         Card ersteAusgespielteKarte = anzahlDerAusgespieltenKartenInDerRunde.get(0);
 
         for (Card nCard : deckOfPlayCards) {
@@ -91,7 +95,6 @@ public class Player {
         }
         return listWithAValidCards;
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Card bedienen() {

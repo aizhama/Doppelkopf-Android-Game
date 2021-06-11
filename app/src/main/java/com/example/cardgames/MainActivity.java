@@ -1,5 +1,6 @@
 package com.example.cardgames;
 
+import android.app.Notification;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,25 +27,30 @@ public class MainActivity extends AppCompatActivity {
     private Player playerL = new Player("Aida");
     private Player playerT = new Player("Aigul");
     private Player playerR = new Player("Guljan");
-    private Card cardObject;
-    private boolean isOnClicked = true;
+    private Stich stich = new Stich();
     ImageView playerone, playertwo, playertree, playerfour, card_top, card_right, card_left, card_bottom;
-    ImageView imgOfTheHandCard_1, imgOfTheHandCard_2, imgOfTheHandCard_3, imgOfTheHandCard_4, imgOfTheHandCard_5,
-            imgOfTheHandCard_6, imgOfTheHandCard_7, imgOfTheHandCard_8, imgOfTheHandCard_9, imgOfTheHandCard_10,
-            imgOfTheHandCard_11, imgOfTheHandCard_12;
+    ImageView imgOfTheHandCard_1, imgOfTheHandCard_2, imgOfTheHandCard_3, imgOfTheHandCard_4, imgOfTheHandCard_5, imgOfTheHandCard_6, imgOfTheHandCard_7, imgOfTheHandCard_8, imgOfTheHandCard_9, imgOfTheHandCard_10, imgOfTheHandCard_11, imgOfTheHandCard_12;
+
     ImageView startPlayer;
+    List<Card> listFromHandCards, listOf_UserTop, listOf_UserLeft, listOf_UserRight;
+    final GameManager gManager = new GameManager(humanPlayer, playerL, playerT, playerR);
 
-    Button start;
-    List<Card> listFromHandCards;
-    List<Card> listOf_UserTop, listOf_UserLeft, listOf_UserRight;
+
     TextView resultsFirstRound, playerLeft, playerTop, playerRight;
-    GameManager gManager = new GameManager(humanPlayer, playerL, playerT, playerR);
 
+    /*das soll gelöscht werden
+    Button start;
+
+     */
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);//SaveInstance State
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startGame();
+
         playerone = (ImageView) findViewById(R.id.playerone);
         playertwo = (ImageView) findViewById(R.id.playertwo);
         playertree = (ImageView) findViewById(R.id.playertree);
@@ -65,43 +72,48 @@ public class MainActivity extends AppCompatActivity {
         imgOfTheHandCard_10 = (ImageView) findViewById(R.id.handCard_10);
         imgOfTheHandCard_11 = (ImageView) findViewById(R.id.handCard_11);
         imgOfTheHandCard_12 = (ImageView) findViewById(R.id.handCard_12);
-        start = (Button) findViewById(R.id.start);
+
         playerLeft = (TextView) findViewById(R.id.playerLeft);
         playerTop = (TextView) findViewById(R.id.playerTop);
         playerRight = (TextView) findViewById(R.id.playerRight);
 
+        /*Das soll gelöscht werden
+        start = (Button) findViewById(R.id.start);
 
-/*        Observable<String> obs=new Observable<>();
+         */
+
+/*
+        Observable<String> obs = new Observable<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             //es wird neuen Value gesetzt
             obs.setValue("Hallo");
         }
         System.out.println(obs.getValue());
-    //Beobachter lamda Funktionen sind Beobachter
-        obs.setOnChangeValue(l->{
-            System.out.println("Neue Wert: " +l);
+        //Beobachter lamda Funktionen sind Beobachter
+        obs.setOnChangeValue(l -> {
+            System.out.println("Neue Wert: " + l);
         });
         obs.setOnChangeValue(this::testLambda);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             obs.setValue("Zweite neuen Wert!");
-        }*/
+        }
+*/
 
+        HashMap<ImageView, Card> mapForHumanPlayerCards = new HashMap<ImageView, Card>();
+        mapForHumanPlayerCards.put(imgOfTheHandCard_1, listFromHandCards.get(0));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_2, listFromHandCards.get(1));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_3, listFromHandCards.get(2));
 
-        HashMap<ImageView, Card> map = new HashMap<ImageView, Card>();
-        map.put(imgOfTheHandCard_1, listFromHandCards.get(0));
-        map.put(imgOfTheHandCard_2, listFromHandCards.get(1));
-        map.put(imgOfTheHandCard_3, listFromHandCards.get(2));
-
-        map.put(imgOfTheHandCard_4, listFromHandCards.get(3));
-        map.put(imgOfTheHandCard_5, listFromHandCards.get(4));
-        map.put(imgOfTheHandCard_6, listFromHandCards.get(5));
-        map.put(imgOfTheHandCard_7, listFromHandCards.get(6));
-        map.put(imgOfTheHandCard_8, listFromHandCards.get(7));
-        map.put(imgOfTheHandCard_9, listFromHandCards.get(8));
-        map.put(imgOfTheHandCard_10, listFromHandCards.get(9));
-        map.put(imgOfTheHandCard_11, listFromHandCards.get(10));
-        map.put(imgOfTheHandCard_12, listFromHandCards.get(11));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_4, listFromHandCards.get(3));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_5, listFromHandCards.get(4));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_6, listFromHandCards.get(5));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_7, listFromHandCards.get(6));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_8, listFromHandCards.get(7));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_9, listFromHandCards.get(8));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_10, listFromHandCards.get(9));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_11, listFromHandCards.get(10));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_12, listFromHandCards.get(11));
         ImageView[] playerListBtn = new ImageView[3];
 
         playCards();
@@ -110,33 +122,52 @@ public class MainActivity extends AppCompatActivity {
         Collections.addAll(listOfImagesFromCards, imgOfTheHandCard_1, imgOfTheHandCard_2, imgOfTheHandCard_3, imgOfTheHandCard_4,
                 imgOfTheHandCard_5, imgOfTheHandCard_6, imgOfTheHandCard_7, imgOfTheHandCard_8, imgOfTheHandCard_9,
                 imgOfTheHandCard_10, imgOfTheHandCard_11, imgOfTheHandCard_12);
-        for (ImageView handCard : listOfImagesFromCards) {
-            Card card = map.get(handCard);//var card hat key and value
-            handCard.setImageResource(card.getResId());//zuordnung von image und suit
-            //Card nUsers = new Card();
-            //card_top.setImageResource(nUsers.getResId());
-            handCard.setOnClickListener(new View.OnClickListener() {
+
+        for (ImageView btnHandCard : listOfImagesFromCards) {
+
+            Card card = mapForHumanPlayerCards.get(btnHandCard);
+            btnHandCard.setImageResource(card.getResId());
+
+            btnHandCard.setOnClickListener(new View.OnClickListener() {
+
+
+                //ToDo: wenn die Spieler nur dran sind, sollen die spielen    //also in gManager -> currentReferences->die auf currentplayer zeigt und diesen currRef compare mit Humanplayer
+                //toDo: wenn spieler dran ist, dann prüfen ob die Karte valide ist?
+                //toDo: wenn player hat eine karte ausgespielt ->notify es im UI
+                //toDo: -> put card in stich!
+
+                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onClick(View view) {
-                    System.out.println(card + "Image from Card------------------------");
-                    card_bottom.setImageDrawable(handCard.getDrawable());
-                    handCard.setEnabled(false);
-                    handCard.setVisibility(View.INVISIBLE);
-                    //var card= cardList.get(imageView);
-                    //onCardPlayed(card);
+                    if (gManager.getCurrentPlayer().equals(humanPlayer)) {
+                        List<Card> validatedCardList = humanPlayer.checkValidityOfTheCards(stich.getAllCards());
+                        if (validatedCardList.stream().anyMatch(c -> c == card)) {
+                            card_bottom.setImageDrawable(btnHandCard.getDrawable());
+                            btnHandCard.setEnabled(false);
+                            btnHandCard.setVisibility(View.INVISIBLE);
+
+                            // -> put card in stich!
+                            gManager.playerPlayedACard(humanPlayer, card);
+
+                            // -> notifiy gamemanager
+                            //gManager.notifyplayedCardToOtherPlayersTest(card);
+
+ //notify über gManager alle anderen Player, wenn der Player hat schon eine Karte ausgespielt
+/*                            gManager.notifyTest((Card playedcard) -> {
+                                System.out.println("playedcard" + playedcard);
+                            });*/
+                        }
+                    }
                 }
             });
         }
     }
-
-/*    private void testLambda(String test)
-    {
-        System.out.println("TEST: "+test);
-    }*/
-
-
-    private void onCardPlayed(Card card) {
+/*
+    private void testLambda(String test) {
+        System.out.println("TEST: " + test);
     }
+*/
+
 
     private void startGame() {
         final int size = 48;
@@ -147,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
         listOf_UserTop = playerL.getDeckOfPlayCards();
         listOf_UserLeft = playerT.getDeckOfPlayCards();
         listOf_UserRight = playerR.getDeckOfPlayCards();
+
         System.out.println(humanPlayer.showPlayerCards() + humanPlayer.getGamerName());
         System.out.println(playerL.showPlayerCards() + playerL.getGamerName());
         System.out.println(playerT.showPlayerCards() + playerT.getGamerName());
@@ -156,21 +188,20 @@ public class MainActivity extends AppCompatActivity {
     private void playCards() {
         List<ImageView> listOfplayerBtn = new LinkedList<>();
         Collections.addAll(listOfplayerBtn, card_left, card_top, card_right);
-
-        System.out.println("PlayerBTN check!" + listOfplayerBtn);
-        System.out.println("card_right check!" + card_right);
-        System.out.println("card_right check!" + card_right);
-        System.out.println("card_right check!" + card_right);
+/*        System.out.println("PlayerBTN check!" + listOfplayerBtn);
+        System.out.println("card_left check!" + card_left);*/
 
         for (ImageView playBtn : listOfplayerBtn) {
             if (playBtn != null) {
                 playBtn.setOnClickListener(new View.OnClickListener() {
+
+
                     @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onClick(View view) {
                         switch (view.getId()) {
                             case R.id.card_left:
-                                if (gManager.getPlayerL().equals(playerL)) {    //wenn wirklich dieser spieler spielt gerade
+                                if (gManager.getCurrentPlayer().equals(playerL)) {    //wenn wirklich dieser spieler spielt gerade
                                     System.out.println("if currentPlayer is equals player2" + gManager.getPlayerL().equals(playerL));
                                     Card kartenWerdenAusgespieltPlayerL = playerL.bedienen();
                                     if (kartenWerdenAusgespieltPlayerL != null) {
@@ -183,19 +214,20 @@ public class MainActivity extends AppCompatActivity {
                                 break;
 
                             case R.id.card_top:
-                                if (gManager.getPlayerT().equals(playerT)) {
+                                if (gManager.getCurrentPlayer().equals(playerT)) {
                                     System.out.println("if currentPlayer is equals player3" + gManager.getPlayerT().equals(playerT));
                                     Card kartenWerdenAusgespieltPlayerT = playerT.bedienen();
                                     if (kartenWerdenAusgespieltPlayerT != null) {
                                         card_top.setImageResource(kartenWerdenAusgespieltPlayerT.getResId());
                                         gManager.playerPlayedACard(playerT, kartenWerdenAusgespieltPlayerT);//nur Message bei jeden Raund!
+
                                     } else {
                                         card_top.setVisibility(View.INVISIBLE);
                                     }
                                 }
                                 break;
                             case R.id.card_right:
-                                if (gManager.getPlayerR().equals(playerR)) {
+                                if (gManager.getCurrentPlayer().equals(playerR)) {
                                     System.out.println("if currentPlayer is equals player4" + gManager.getPlayerR().equals(playerR));
                                     Card kartenWerdenAusgespieltPlayerR = playerR.bedienen();
                                     if (kartenWerdenAusgespieltPlayerR != null) {
@@ -204,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
                                     } else {
                                         card_right.setVisibility(View.INVISIBLE);
                                     }
-                                }else {
+                                } else {
 
                                     card_right.setEnabled(false);
                                     System.out.println(" jetzt Player 1 ist drann");
@@ -217,12 +249,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void MessageBox(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    public void onSavedInstanceState(Bundle savedInstanceState) {
+/*    public void onSavedInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
+    }*/
 
-    }
 }

@@ -1,6 +1,8 @@
 package com.example.cardgames;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
@@ -23,6 +26,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
+import static androidx.core.content.ContextCompat.getSystemService;
 
 public class GameManager {
 
@@ -35,7 +41,7 @@ public class GameManager {
     private Player winPLayer;
 
     private List<Card> listDerStichen = new LinkedList<>();
-    Stich stich;
+    Stich stich= new Stich();
     private Card ausgespielteKarte;
 
 
@@ -46,6 +52,7 @@ public class GameManager {
         this.playerR = player4;
 
         currentPlayer = this.humanPlayer;
+
         humanPlayer.setNextPlayer(player2);
         player2.setNextPlayer(player3);
         player3.setNextPlayer(player4);
@@ -76,6 +83,10 @@ public class GameManager {
         //sout("wer hat den Stich gwonnen!)
         //denStichinPlayerPointsTableEintragen();
         return stich;
+    }
+
+    public void notifyplayedCardToOtherPlayersTest(Card ausgespielteKarte) {
+            System.out.println("TypeOfCards :" + ausgespielteKarte.getTypesOfCards() + ausgespielteKarte.getSuit() + "Suit :" + " ");
     }
 
     public void setListDerStichen(List<Card> listDerStichen) {

@@ -9,8 +9,7 @@ public class Card {
     private String cardName;
     private int id;
     private int value;
-    private @DrawableRes
-    int resId;
+    private @DrawableRes int resId;
     private int power;
     private boolean trump;
 
@@ -54,7 +53,6 @@ public class Card {
         Herz,
         Karo;
     }
-
     Suits suit;
 
     public Suits getSuit() {
@@ -78,7 +76,7 @@ public class Card {
         }
     }
 
-    public Card(TypesOfCards typesOfCards, Suits suit, int value, @DrawableRes int resId, int power, boolean trump, boolean fehlFarbe) {
+    public Card(TypesOfCards typesOfCards, Suits suit, int value, @DrawableRes int resId, int power, boolean trump) {
         this.typesOfCards = typesOfCards;
         this.suit=suit;
         this.cardName = typesOfCards.toString();
