@@ -28,9 +28,12 @@ public class MainActivity extends AppCompatActivity {
     private Player playerT = new Player("Aigul");
     private Player playerR = new Player("Guljan");
     private Stich stich = new Stich();
-    ImageView playerone, playertwo, playertree, playerfour, card_top, card_right, card_left, card_bottom;
-    ImageView imgOfTheHandCard_1, imgOfTheHandCard_2, imgOfTheHandCard_3, imgOfTheHandCard_4, imgOfTheHandCard_5, imgOfTheHandCard_6, imgOfTheHandCard_7, imgOfTheHandCard_8, imgOfTheHandCard_9, imgOfTheHandCard_10, imgOfTheHandCard_11, imgOfTheHandCard_12;
 
+    private StackList stackList;
+    ImageView playerone, playertwo, playertree, playerfour, card_top, card_right, card_left, card_bottom;
+    ImageView imgOfTheHandCard_1, imgOfTheHandCard_2, imgOfTheHandCard_3, imgOfTheHandCard_4, imgOfTheHandCard_5,
+            imgOfTheHandCard_6, imgOfTheHandCard_7, imgOfTheHandCard_8, imgOfTheHandCard_9, imgOfTheHandCard_10,
+            imgOfTheHandCard_11, imgOfTheHandCard_12;
     ImageView startPlayer;
     List<Card> listFromHandCards, listOf_UserTop, listOf_UserLeft, listOf_UserRight;
     final GameManager gManager = new GameManager(humanPlayer, playerL, playerT, playerR);
@@ -60,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         card_right = (ImageView) findViewById(R.id.card_right);
         card_left = (ImageView) findViewById(R.id.card_left);
         card_bottom = (ImageView) findViewById(R.id.card_bottom);
+
+        //ToDo: warum hier findViewBy? das ist Falsch
         imgOfTheHandCard_1 = (ImageView) findViewById(R.id.handCard_1);
         imgOfTheHandCard_2 = (ImageView) findViewById(R.id.handCard_2);
         imgOfTheHandCard_3 = (ImageView) findViewById(R.id.handCard_3);
@@ -72,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         imgOfTheHandCard_10 = (ImageView) findViewById(R.id.handCard_10);
         imgOfTheHandCard_11 = (ImageView) findViewById(R.id.handCard_11);
         imgOfTheHandCard_12 = (ImageView) findViewById(R.id.handCard_12);
-
         playerLeft = (TextView) findViewById(R.id.playerLeft);
         playerTop = (TextView) findViewById(R.id.playerTop);
         playerRight = (TextView) findViewById(R.id.playerRight);
@@ -99,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
             obs.setValue("Zweite neuen Wert!");
         }
 */
-
         HashMap<ImageView, Card> mapForHumanPlayerCards = new HashMap<ImageView, Card>();
         mapForHumanPlayerCards.put(imgOfTheHandCard_1, listFromHandCards.get(0));
         mapForHumanPlayerCards.put(imgOfTheHandCard_2, listFromHandCards.get(1));
@@ -124,13 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 imgOfTheHandCard_10, imgOfTheHandCard_11, imgOfTheHandCard_12);
 
         for (ImageView btnHandCard : listOfImagesFromCards) {
-
             Card card = mapForHumanPlayerCards.get(btnHandCard);
             btnHandCard.setImageResource(card.getResId());
-
             btnHandCard.setOnClickListener(new View.OnClickListener() {
-
-
                 //ToDo: wenn die Spieler nur dran sind, sollen die spielen    //also in gManager -> currentReferences->die auf currentplayer zeigt und diesen currRef compare mit Humanplayer
                 //toDo: wenn spieler dran ist, dann prüfen ob die Karte valide ist?
                 //toDo: wenn player hat eine karte ausgespielt ->notify es im UI
@@ -142,25 +141,38 @@ public class MainActivity extends AppCompatActivity {
                     if (gManager.getCurrentPlayer().equals(humanPlayer)) {
                         List<Card> validatedCardList = humanPlayer.checkValidityOfTheCards(stich.getAllCards());
                         if (validatedCardList.stream().anyMatch(c -> c == card)) {
-                            card_bottom.setImageDrawable(btnHandCard.getDrawable());
-                            btnHandCard.setEnabled(false);
-                            btnHandCard.setVisibility(View.INVISIBLE);
+                            int img = stackList.
 
-                            // -> put card in stich!
+
+                            card_bottom.setImageDrawable(btnHandCard.getDrawable());
+                            btnHandCard.setEnabled(true);
+                            btnHandCard.setVisibility(View.VISIBLE);
                             gManager.playerPlayedACard(humanPlayer, card);
 
                             // -> notifiy gamemanager
                             //gManager.notifyplayedCardToOtherPlayersTest(card);
-
- //notify über gManager alle anderen Player, wenn der Player hat schon eine Karte ausgespielt
-/*                            gManager.notifyTest((Card playedcard) -> {
-                                System.out.println("playedcard" + playedcard);
-                            });*/
+                        }else{
+                            btnHandCard.setVisibility(View.INVISIBLE);
+                            btnHandCard.setEnabled(false);
                         }
                     }
                 }
             });
         }
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private ImageView assignCorrectIdToTheCard(){
+        //imgOfTheHandCard_12 = (ImageView) findViewById(R.id.handCard_12);
+
+        List<Card> img  = stackList.initializeDeck();
+        ImageView imgage= img.stream().allMatch(cardView -> cardView.getResId())
+        List<Card> validatedCardList = humanPlayer.checkValidityOfTheCards(stich.getAllCards());
+        ImageView imgage= validatedCardList.stream().filter(e->e.getResId()).toI
+
+
+
     }
 /*
     private void testLambda(String test) {
