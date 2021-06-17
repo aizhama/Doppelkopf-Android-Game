@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         mapForHumanPlayerCards.put(imgOfTheHandCard_1, listFromHandCards.get(0));
         mapForHumanPlayerCards.put(imgOfTheHandCard_2, listFromHandCards.get(1));
         mapForHumanPlayerCards.put(imgOfTheHandCard_3, listFromHandCards.get(2));
-
         mapForHumanPlayerCards.put(imgOfTheHandCard_4, listFromHandCards.get(3));
         mapForHumanPlayerCards.put(imgOfTheHandCard_5, listFromHandCards.get(4));
         mapForHumanPlayerCards.put(imgOfTheHandCard_6, listFromHandCards.get(5));
@@ -134,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 //toDo: wenn spieler dran ist, dann prüfen ob die Karte valide ist?
                 //toDo: wenn player hat eine karte ausgespielt ->notify es im UI
                 //toDo: -> put card in stich!
+                //ToDo: Comp sp sollen autom mit Timer -> dass nach dem
+                //
 
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
@@ -141,19 +142,13 @@ public class MainActivity extends AppCompatActivity {
                     if (gManager.getCurrentPlayer().equals(humanPlayer)) {
                         List<Card> validatedCardList = humanPlayer.checkValidityOfTheCards(stich.getAllCards());
                         if (validatedCardList.stream().anyMatch(c -> c == card)) {
-                            int img = stackList.
-
-
-                            card_bottom.setImageDrawable(btnHandCard.getDrawable());
-                            btnHandCard.setEnabled(true);
-                            btnHandCard.setVisibility(View.VISIBLE);
+                            card_bottom.setImageResource(card.getResId());
+                            card_bottom.setVisibility(View.VISIBLE);
+                            btnHandCard.setEnabled(false);
+                            btnHandCard.setVisibility(View.INVISIBLE);
                             gManager.playerPlayedACard(humanPlayer, card);
 
                             // -> notifiy gamemanager
-                            //gManager.notifyplayedCardToOtherPlayersTest(card);
-                        }else{
-                            btnHandCard.setVisibility(View.INVISIBLE);
-                            btnHandCard.setEnabled(false);
                         }
                     }
                 }
@@ -161,19 +156,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+/*
+   @RequiresApi(api = Build.VERSION_CODES.N)
+    private ImageView assignCorrectIdToTheCard() {
+       //imgOfTheHandCard_12 = (ImageView) findViewById(R.id.handCard_12);
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private ImageView assignCorrectIdToTheCard(){
-        //imgOfTheHandCard_12 = (ImageView) findViewById(R.id.handCard_12);
-
-        List<Card> img  = stackList.initializeDeck();
-        ImageView imgage= img.stream().allMatch(cardView -> cardView.getResId())
-        List<Card> validatedCardList = humanPlayer.checkValidityOfTheCards(stich.getAllCards());
-        ImageView imgage= validatedCardList.stream().filter(e->e.getResId()).toI
-
-
-
-    }
+       List<Card> img = stackList.initializeDeck();
+       ImageView imgage = img.stream().allMatch(cardView -> cardView.getResId())
+       List<Card> validatedCardList = humanPlayer.checkValidityOfTheCards(stich.getAllCards());
+       ImageView imgage = img.stream()
+   }*/
 /*
     private void testLambda(String test) {
         System.out.println("TEST: " + test);
