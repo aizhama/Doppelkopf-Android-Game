@@ -155,6 +155,10 @@ TEST TEST TEST
     }
 
 /*
+
+
+
+
    @RequiresApi(api = Build.VERSION_CODES.N)
     private ImageView assignCorrectIdToTheCard() {
        //imgOfTheHandCard_12 = (ImageView) findViewById(R.id.handCard_12);
