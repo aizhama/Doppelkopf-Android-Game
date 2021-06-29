@@ -1,104 +1,121 @@
 package com.example.cardgames;
-
-import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-import android.provider.ContactsContract;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import androidx.annotation.DrawableRes;
+import android.os.Build;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
-import androidx.fragment.app.Fragment;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
+import androidx.annotation.RequiresApi;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-
-import static android.content.Context.NOTIFICATION_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
 
 public class GameManager {
 
-    private Player nPlayer;
     private Player currentPlayer;
     private Player humanPlayer;
     private Player playerL;
     private Player playerT;
     private Player playerR;
-    private Player winPLayer;
-
-    private List<Card> listDerStichen = new LinkedList<>();
-    Stich stich= new Stich();
+    private List<Card> listeDerStichen = new LinkedList<>();
+    Stich stich = new Stich();
     private Card ausgespielteKarte;
-
 
     public GameManager(@NonNull Player humanPlayer, @NonNull Player player2, @NonNull Player player3, @NonNull Player player4) {
         this.humanPlayer = humanPlayer;
         this.playerL = player2;
         this.playerT = player3;
         this.playerR = player4;
-
         currentPlayer = this.humanPlayer;
-
         humanPlayer.setNextPlayer(player2);
         player2.setNextPlayer(player3);
         player3.setNextPlayer(player4);
         player4.setNextPlayer(humanPlayer);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public Stich playerPlayedACard(Player nPlayer, Card ausgespielteKarte) {
-        //mit Konstruktor ist festgelegt, dass ein spieler immer auf nächste zeigt
-        //currentReference ist zeiger immer auf den gerade spielte Spieler
-        //mit currentSpieler prüfen ob ist ein Player jetzt dran
-        //im Ui prüfen ob gerade(currentPLayer ist dran) ->nur currentPlayer darf in der Zeit zu clicken
-        //in classe Stich wenn 4 wurde ausgespielt packen
-        //und zu dem wer hat die gr0ßte Karte ausgespielt hinzufügen
-
-        if (stich.getCardFirst() != null)
+        if (stich.getCardFirst() == null)
             stich.setCardFirst(ausgespielteKarte);
-        else if (stich.getCardSecond() != null)
+        else if (stich.getCardSecond() == null)
             stich.setCardSecond(ausgespielteKarte);
-        else if (stich.getCardThird() != null)
+        else if (stich.getCardThird() == null)
             stich.setCardThird(ausgespielteKarte);
-        else if (stich.getCardFourth() != null) {
+        else if (stich.getCardFourth() == null)
             stich.setCardFourth(ausgespielteKarte);
-            winPLayer.addAStich(stich);
-            System.out.println("The Round is finished!");
-        }
 
-        //soreThePoints();
-        //sout("wer hat den Stich gwonnen!)
-        //denStichinPlayerPointsTableEintragen();
+        if (stich.complete()) {
+            Player winnerPlayer = scoreThePoints(stich);
+            currentPlayer = winnerPlayer;
+            currentPlayer.addAStich(stich);
+            System.out.println("The Round is finished!");
+        } else {
+            currentPlayer = currentPlayer.getNextPlayer();
+        }
         return stich;
     }
 
-    public void notifyplayedCardToOtherPlayersTest(Card ausgespielteKarte) {
-            System.out.println("TypeOfCards :" + ausgespielteKarte.getTypesOfCards() + ausgespielteKarte.getSuit() + "Suit :" + " ");
-    }
 
-    public void setListDerStichen(List<Card> listDerStichen) {
-        this.listDerStichen = listDerStichen;
-    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private Player scoreThePoints(Stich nStich) {
+        //ToDo: das fehlt noch!!! Wenn in eine Runde wurden zwei gleiche Karten ausgespielt, die erste Karte soll gewinnen
+        //toDo: //trumpfCard= nStich.getAllCards().stream().filter(c-> c.getCardName()== trumpfCard.getCardName())
 
-    public Player getnPlayer() {
+        Player nPlayer = null;
+        Card trumpfCard = nStich.getAllCards().stream()
+                .filter(Card::isTrump)
+                .max(Comparator.comparing(Card::getPower)).get();
+
+        Card fehlFarbe = nStich.getAllCards().stream()
+                .filter(Card::isFehlFarbe)
+                .max(Comparator.comparing(Card::getPower)).get();
+
+        Card cardOfHumanPlayer = nStich.getCardFirst();
+        Card cardOfPlayerL = nStich.getCardSecond();
+        Card cardOfPlayerT = nStich.getCardThird();
+        Card cardOfPlayerR = nStich.getCardFourth();
+
+        //wenn erste Karte trumpf-> ermitteln größte trumpf und stich zu ihm zuweisen
+        if (nStich.getCardFirst().isTrump()) {
+            //wenn die Karten erstens Players auf der höchsten Karte gleich ist, dann diesen stich hat er gewonnen
+            if (cardOfHumanPlayer.equals(trumpfCard)) {
+                nPlayer = humanPlayer;
+            } else if (cardOfPlayerL.equals(trumpfCard)) {
+                nPlayer = playerL;
+            } else if (cardOfPlayerT.equals(trumpfCard)) {
+                nPlayer = playerT;
+            } else if (cardOfPlayerR.equals(trumpfCard)) {
+                nPlayer = playerR;
+            }
+            //wenn erste Karte farbe ist-> die größte Farbe ermitteln und ihm den stich zuweisen
+        } else if (nStich.getCardFirst().isFehlFarbe() && trumpfCard == null) {
+            if (cardOfHumanPlayer.equals(fehlFarbe)) {
+                nPlayer = humanPlayer;
+            } else if (cardOfPlayerL.equals(fehlFarbe)) {
+                nPlayer = playerL;
+            } else if (cardOfPlayerT.equals(fehlFarbe)) {
+                nPlayer = playerT;
+            } else if (cardOfPlayerR.equals(fehlFarbe)) {
+                nPlayer = playerR;
+            }
+
+            //wenn in eine Farbe Runde, jemand einen Trumpf ausgespielt hat, dann soll er den Stich gewinnen
+        } else if (nStich.getCardFirst().isFehlFarbe() && trumpfCard != null) {
+            if (cardOfHumanPlayer.equals(trumpfCard)) {
+                nPlayer = humanPlayer;
+            } else if (cardOfPlayerL.equals(trumpfCard)) {
+                nPlayer = playerL;
+            } else if (cardOfPlayerT.equals(trumpfCard)) {
+                nPlayer = playerT;
+            } else if (cardOfPlayerR.equals(trumpfCard)) {
+                nPlayer = playerR;
+            }
+        }
+        if (nPlayer == null) {
+            System.out.println("ERROR: This is not allowed!");
+        }
         return nPlayer;
     }
 
-    public void setnPlayer(Player nPlayer) {
-        this.nPlayer = nPlayer;
+
+    public void setListDerStichen(List<Card> listDerStichen) {
+        this.listeDerStichen = listDerStichen;
     }
 
     public Player getCurrentPlayer() {
@@ -141,14 +158,6 @@ public class GameManager {
         this.playerR = playerR;
     }
 
-    public Player getWinPLayer() {
-        return winPLayer;
-    }
-
-    public void setWinPLayer(Player winPLayer) {
-        this.winPLayer = winPLayer;
-    }
-
     public Card getAusgespielteKarte() {
         return ausgespielteKarte;
     }
@@ -158,7 +167,7 @@ public class GameManager {
     }
 
     public List<Card> getListDerStichen() {
-        return listDerStichen;
+        return listeDerStichen;
     }
 
     public Stich getStich() {

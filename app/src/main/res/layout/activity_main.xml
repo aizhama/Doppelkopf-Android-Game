@@ -26,7 +26,7 @@
             android:src="@drawable/playerone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.937"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
@@ -81,20 +81,34 @@
                 android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/PayerTextLayot"
+                    android:id="@+id/PlayerTextLayot"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:layout_editor_absoluteX="0dp">
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <TextView
+                        android:id="@+id/humanPlayer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="280dp"
+                        android:layout_marginEnd="135dp"
+                        android:layout_marginRight="135dp"
+                        android:text="@string/humanPlayer"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/playerTop"
                         android:layout_width="70dp"
                         android:layout_height="23dp"
                         android:contentDescription="@string/playertop"
-                        android:text="PlayerTop"
+                        android:text="@string/playertop"
                         android:textColorLink="@color/purple_500"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -119,41 +133,30 @@
                         android:id="@+id/playerRight"
                         android:layout_width="75dp"
                         android:layout_height="24dp"
-                        android:text="PlayerRight"
+                        android:layout_marginStart="135dp"
+                        android:layout_marginLeft="135dp"
+                        android:text="@string/playerright"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.885"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/playerLeft"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.684" />
 
-                    <ImageView
-                        android:id="@+id/startPlayer"
-                        android:layout_width="13dp"
-                        android:layout_height="3dp"
-                        android:layout_marginTop="70dp"
-                        android:contentDescription="@string/ui_attributes"
-                        android:src="@drawable/start"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.303" />
-
                     <Button
-                        android:id="@+id/start"
-                        android:layout_width="79dp"
-                        android:layout_height="37dp"
-                        android:contentDescription="@string/ui_attributes"
-                        android:text="@string/start"
-                        android:textColor="#FFFFFF"
+                        android:id="@+id/pcPlayer"
+                        android:layout_width="116dp"
+                        android:layout_height="36dp"
+                        android:text="@string/pcPlayer"
                         android:textSize="12sp"
+                        android:visibility="visible"
+                        app:backgroundTint="#2196F3"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.565" />
+                        app:layout_constraintTop_toTopOf="parent" />
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -165,7 +168,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_attributes"
                 android:scaleType="centerInside"
-                android:src="@drawable/herzass"
+                android:src="@drawable/herzzehn"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -180,7 +183,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_attributes"
                 android:scaleType="centerInside"
-                android:src="@drawable/box_grey"
+                android:src="@drawable/herzass"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -197,8 +200,7 @@
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.482" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/card_bottom"
@@ -207,7 +209,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_attributes"
                 android:scaleType="centerInside"
-                android:src="@drawable/box_grey"
+                android:src="@drawable/kreuzass"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -17,11 +17,9 @@ public class Player {
     Card nextCard;
     Card nächsteKarte;
     private Player nextPlayer;
-    private List<Stich> listeDerGesamtStiche;
-    private GameManager gameManager;
-    Stich stich= new Stich();
-    private StackList stackList;
+    private List<Stich> listeDerGesamtStiche= new ArrayList<>();
 
+    Stich stich= new Stich();
 
     public Player(String gamerName) {
         this.gamerName = gamerName;
@@ -30,6 +28,9 @@ public class Player {
     public Player(Player nextPlayer, List<Card> playCards) {
         this.nextPlayer = nextPlayer;
         this.deckOfPlayCards = playCards;
+    }
+    public boolean completeDeckOfPlayCards(){
+        return deckOfPlayCards.size() <=12;
     }
 
     public List<Card> showPlayerCards() {
@@ -48,9 +49,7 @@ public class Player {
         if(anzahlDerAusgespieltenKartenInDerRunde.isEmpty()){
             return deckOfPlayCards;
         }
-
         Card ersteAusgespielteKarte = anzahlDerAusgespieltenKartenInDerRunde.get(0);
-
         for (Card nCard : deckOfPlayCards) {
             if (anzahlDerAusgespieltenKartenInDerRunde.size() == 0) {
                 System.out.println("Es wurde bis jetzt noch keine Karte ausgespielt!");
@@ -107,11 +106,13 @@ public class Player {
         return nächsteKarte;
     }
 
-
     public void addAStich(Stich stich) {
         listeDerGesamtStiche.add(stich);
     }
 
+    public List<Stich> getListeDerGesamtStiche() {
+        return listeDerGesamtStiche;
+    }
 
     public String getGamerName() {
         return gamerName;
@@ -135,22 +136,6 @@ public class Player {
 
     public void setNextPlayer(Player nextPlayer) {
         this.nextPlayer = nextPlayer;
-    }
-
-    public List<Stich> getListeDerGesamtStiche() {
-        return listeDerGesamtStiche;
-    }
-
-    public void setListeDerGesamtStiche(List<Stich> listeDerGesamtStiche) {
-        this.listeDerGesamtStiche = listeDerGesamtStiche;
-    }
-
-    public GameManager getGameManager() {
-        return gameManager;
-    }
-
-    public void setGameManager(GameManager gameManager) {
-        this.gameManager = gameManager;
     }
 }
 
