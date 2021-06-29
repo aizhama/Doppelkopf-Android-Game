@@ -29,6 +29,10 @@ public class GameManager {
         player4.setNextPlayer(humanPlayer);
     }
 
+
+
+
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Stich playerPlayedACard(Player nPlayer, Card ausgespielteKarte) {
         if (stich.getCardFirst() == null)
