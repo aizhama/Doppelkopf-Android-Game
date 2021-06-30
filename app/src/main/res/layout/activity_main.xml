@@ -364,21 +364,21 @@
 
         <ImageView
             android:id="@+id/playerone"
-            android:layout_width="57dp"
-            android:layout_height="47dp"
-            android:layout_marginBottom="164dp"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="172dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/ui_handcards"
             android:src="@drawable/playerone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.99"
+            app:layout_constraintHorizontal_bias="0.520"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/playertwo"
-            android:layout_width="63dp"
-            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
             android:contentDescription="@string/ui_handcards"
@@ -390,20 +390,21 @@
 
         <ImageView
             android:id="@+id/playertree"
-            android:layout_width="57dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="88dp"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="100dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/ui_handcards"
             android:src="@drawable/playertree"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.525"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/playerfour"
-            android:layout_width="52dp"
-            android:layout_height="44dp"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="4dp"
             android:layout_marginRight="4dp"
             android:adjustViewBounds="true"
@@ -446,7 +447,7 @@
                     app:layout_constraintVertical_bias="0.4">
 
                     <TextView
-                        android:id="@+id/playerTop"
+                        android:id="@+id/playerTopText"
                         android:layout_width="70dp"
                         android:layout_height="20dp"
                         android:contentDescription="@string/playerTop"
@@ -460,7 +461,7 @@
                         app:layout_constraintVertical_bias="0.18" />
 
                     <TextView
-                        android:id="@+id/playerBottom"
+                        android:id="@+id/playerBottomText"
                         android:layout_width="70dp"
                         android:layout_height="20dp"
                         android:text="@string/playerBottom"
@@ -472,7 +473,7 @@
                         app:layout_constraintVertical_bias="0.823" />
 
                     <TextView
-                        android:id="@+id/playerLeft"
+                        android:id="@+id/playerLeftText"
                         android:layout_width="70dp"
                         android:layout_height="20dp"
                         android:text="@string/playerleft"
@@ -484,7 +485,7 @@
                         app:layout_constraintVertical_bias="0.331" />
 
                     <TextView
-                        android:id="@+id/playerRight"
+                        android:id="@+id/playerRightText"
                         android:layout_width="70dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="135dp"
@@ -493,7 +494,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.921"
-                        app:layout_constraintStart_toEndOf="@+id/playerLeft"
+                        app:layout_constraintStart_toEndOf="@+id/playerLeftText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.331" />
