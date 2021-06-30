@@ -245,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
             imgCard.setImageResource(cardPlayerR.getResId());
         }
 
+
         List<ImageView> listOfImagesFromCards = new LinkedList<>();
         Collections.addAll(listOfImagesFromCards, imgOfTheHandCard_1, imgOfTheHandCard_2, imgOfTheHandCard_3, imgOfTheHandCard_4,
                 imgOfTheHandCard_5, imgOfTheHandCard_6, imgOfTheHandCard_7, imgOfTheHandCard_8, imgOfTheHandCard_9,
