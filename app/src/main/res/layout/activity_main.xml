@@ -17,52 +17,56 @@
 
         <LinearLayout
             android:id="@+id/LinearLayout_Right_1"
-            android:layout_width="40"
-            android:layout_height="250"
+            android:layout_width="40dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="330dp"
+            android:layout_marginLeft="330dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="324dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/handCardPlayerR_1"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/kreuzass" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_2"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzdame" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_3"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzneun" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_4"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzass" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_5"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzass" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_6"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzass" />
 
@@ -70,52 +74,55 @@
 
         <LinearLayout
             android:id="@+id/LinearLayout_Right_2"
-            android:layout_width="40"
-            android:layout_height="250"
+            android:layout_width="40dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="245dp"
+            android:layout_marginLeft="245dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="287dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/handCardPlayerR_7"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/pikdame" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_8"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzzehn" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_9"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzneun" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_10"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzkonig" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_11"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
 
             <ImageView
                 android:id="@+id/handCardPlayerR_12"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/karobube" />
 
@@ -123,56 +130,60 @@
 
         <LinearLayout
             android:id="@+id/HorizontalLayout_Top_1"
-            android:layout_width="250"
-            android:layout_height="40"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="565dp"
             android:orientation="horizontal"
-            tools:layout_editor_absoluteX="56dp"
-            tools:layout_editor_absoluteY="1dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/handCardPlayerT_1"
-                android:layout_width="40"
-                android:layout_height="35"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzneun" />
 
             <ImageView
                 android:id="@+id/handCardPlayerT_2"
-                android:layout_width="40"
-                android:layout_height="35"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzneun" />
 
             <ImageView
                 android:id="@+id/handCardPlayerT_3"
-                android:layout_width="40"
-                android:layout_height="35"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzneun" />
 
             <ImageView
                 android:id="@+id/handCardPlayerT_4"
-                android:layout_width="40"
-                android:layout_height="35"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzneun" />
 
             <ImageView
                 android:id="@+id/handCardPlayerT_5"
-                android:layout_width="40"
-                android:layout_height="35"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzneun" />
 
             <ImageView
                 android:id="@+id/handCardPlayerT_6"
-                android:layout_width="40"
-                android:layout_height="35"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzneun" />
@@ -180,19 +191,21 @@
 
         <LinearLayout
             android:id="@+id/HorizontalLayout_Top_2"
-            android:layout_width="250"
-            android:layout_height="40"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="650dp"
             android:layout_weight="1"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="39dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/handCardPlayerT_7"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
@@ -200,7 +213,7 @@
             <ImageView
                 android:id="@+id/handCardPlayerT_8"
                 android:layout_width="wrap_content"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
@@ -208,7 +221,7 @@
             <ImageView
                 android:id="@+id/handCardPlayerT_9"
                 android:layout_width="wrap_content"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
@@ -216,7 +229,7 @@
             <ImageView
                 android:id="@+id/handCardPlayerT_10"
                 android:layout_width="wrap_content"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
@@ -224,7 +237,7 @@
             <ImageView
                 android:id="@+id/handCardPlayerT_11"
                 android:layout_width="wrap_content"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
@@ -232,7 +245,7 @@
             <ImageView
                 android:id="@+id/handCardPlayerT_12"
                 android:layout_width="wrap_content"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
@@ -241,10 +254,10 @@
 
         <LinearLayout
             android:id="@+id/LinearLayout_Left_2"
-            android:layout_width="40"
-            android:layout_height="250"
-            android:layout_marginStart="48dp"
-            android:layout_marginLeft="48dp"
+            android:layout_width="40dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginLeft="43dp"
             android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -254,42 +267,42 @@
             <ImageView
                 android:id="@+id/handCardPlayerL_7"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_8"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_9"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_10"
                 android:layout_width="wrap_content"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_11"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_12"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
 
@@ -297,8 +310,8 @@
 
         <LinearLayout
             android:id="@+id/LinearLayout_Left_1"
-            android:layout_width="40"
-            android:layout_height="250"
+            android:layout_width="40dp"
+            android:layout_height="250dp"
             android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -308,42 +321,42 @@
             <ImageView
                 android:id="@+id/handCardPlayerL_1"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzbube" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_2"
                 android:layout_width="wrap_content"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzkonig" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_3"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzkonig" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_4"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzzehn" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_5"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzzehn" />
 
             <ImageView
                 android:id="@+id/handCardPlayerL_6"
                 android:layout_width="match_parent"
-                android:layout_height="40"
+                android:layout_height="40dp"
                 android:contentDescription="@string/ui_handcards"
                 android:src="@drawable/herzzehn" />
 
@@ -377,9 +390,9 @@
 
         <ImageView
             android:id="@+id/playertree"
-            android:layout_width="63dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="80dp"
+            android:layout_width="57dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="88dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/ui_handcards"
             android:src="@drawable/playertree"
@@ -413,83 +426,89 @@
             app:layout_constraintVertical_bias="0.486">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="200dp"
+                android:layout_height="260dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/PlayerTextLayot"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="211dp"
+                    android:layout_height="252dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0">
-
-                    <TextView
-                        android:id="@+id/humanPlayer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="280dp"
-                        android:layout_marginEnd="135dp"
-                        android:layout_marginRight="135dp"
-                        android:text="@string/humanPlayer"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintVertical_bias="0.4">
 
                     <TextView
                         android:id="@+id/playerTop"
                         android:layout_width="70dp"
-                        android:layout_height="23dp"
-                        android:contentDescription="@string/playertop"
-                        android:text="@string/playertop"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/playerTop"
+                        android:text="@string/playerTop"
                         android:textColorLink="@color/purple_500"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_bias="0.617"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.275" />
+                        app:layout_constraintVertical_bias="0.18" />
+
+                    <TextView
+                        android:id="@+id/playerBottom"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:text="@string/playerBottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.617"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.823" />
 
                     <TextView
                         android:id="@+id/playerLeft"
-                        android:layout_width="79dp"
-                        android:layout_height="17dp"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
                         android:text="@string/playerleft"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.022"
+                        app:layout_constraintHorizontal_bias="0.191"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.667" />
+                        app:layout_constraintVertical_bias="0.331" />
 
                     <TextView
                         android:id="@+id/playerRight"
-                        android:layout_width="75dp"
-                        android:layout_height="24dp"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
                         android:layout_marginStart="135dp"
                         android:layout_marginLeft="135dp"
                         android:text="@string/playerright"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_bias="0.921"
                         app:layout_constraintStart_toEndOf="@+id/playerLeft"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.684" />
+                        app:layout_constraintVertical_bias="0.331" />
 
                     <Button
-                        android:id="@+id/pcPlayer"
-                        android:layout_width="116dp"
-                        android:layout_height="36dp"
-                        android:text="@string/pcPlayer"
+                        android:id="@+id/play"
+                        android:layout_width="73dp"
+                        android:layout_height="34dp"
+                        android:text="@string/play"
                         android:textSize="12sp"
                         android:visibility="visible"
                         app:backgroundTint="#2196F3"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.608"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -499,8 +518,8 @@
 
             <ImageView
                 android:id="@+id/card_top"
-                android:layout_width="46dp"
-                android:layout_height="77dp"
+                android:layout_width="35dp"
+                android:layout_height="33dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:scaleType="centerInside"
@@ -514,8 +533,8 @@
 
             <ImageView
                 android:id="@+id/card_right"
-                android:layout_width="43dp"
-                android:layout_height="88dp"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:scaleType="centerInside"
@@ -527,8 +546,8 @@
 
             <ImageView
                 android:id="@+id/card_left"
-                android:layout_width="51dp"
-                android:layout_height="80dp"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:scaleType="centerInside"
@@ -540,8 +559,8 @@
 
             <ImageView
                 android:id="@+id/card_bottom"
-                android:layout_width="48dp"
-                android:layout_height="103dp"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/ui_handcards"
                 android:scaleType="centerInside"

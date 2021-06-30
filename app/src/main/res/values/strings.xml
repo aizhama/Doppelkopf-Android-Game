@@ -12,11 +12,11 @@
     <string name="ui_handcards">ui_attributes</string>
     <string name="start">Start</string>
     <string name="playerleft">playerLeft</string>
-    <string name="playertop">playertop</string>
+    <string name="playerTop">playerTop</string>
     <string name="playerright">playerRight</string>
-    <string name="humanPlayer">humanPlayer</string>
+    <string name="playerBottom">playerBottom</string>
 
     <string name="start_timer">start_timer</string>
-    <string name="pcPlayer">pcPlayer</string>
+    <string name="play">play</string>
 
 </resources>

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     TextView startGame;
     List<Card> listHandCardsHumanPlayer, listHandCardsPlayerL, listHandCardsPlayerT, listHandCardsPlayerR;
     final GameManager gManager = new GameManager(humanPlayer, playerL, playerT, playerR);
-    TextView playerLeft, playerTop, playerRight;
+    TextView playerBottom, playerLeft, playerTop, playerRight;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         imgHandCardPlayerT_2 = (ImageView) findViewById(R.id.handCardPlayerT_8);
         imgHandCardPlayerT_3 = (ImageView) findViewById(R.id.handCardPlayerT_9);
 
-        resultsFromPlayer = (Button) findViewById(R.id.pcPlayer);
+        resultsFromPlayer = (Button) findViewById(R.id.play);
         startGame = (TextView) findViewById(R.id.start);
         playerLeft = (TextView) findViewById(R.id.playerLeft);
         playerTop = (TextView) findViewById(R.id.playerTop);
