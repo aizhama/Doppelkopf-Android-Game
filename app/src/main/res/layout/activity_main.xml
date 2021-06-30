@@ -11,64 +11,400 @@
     tools:context="MainActivity">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/LinearLayout_Right_1"
+            android:layout_width="40"
+            android:layout_height="250"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="324dp">
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_1"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/kreuzass" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_2"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzdame" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_3"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzneun" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_4"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzass" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_5"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzass" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_6"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzass" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_Right_2"
+            android:layout_width="40"
+            android:layout_height="250"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="287dp">
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_7"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/pikdame" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_8"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzzehn" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_9"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzneun" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_10"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzkonig" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_11"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerR_12"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/karobube" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/HorizontalLayout_Top_1"
+            android:layout_width="250"
+            android:layout_height="40"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_1"
+                android:layout_width="40"
+                android:layout_height="35"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzneun" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_2"
+                android:layout_width="40"
+                android:layout_height="35"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzneun" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_3"
+                android:layout_width="40"
+                android:layout_height="35"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzneun" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_4"
+                android:layout_width="40"
+                android:layout_height="35"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzneun" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_5"
+                android:layout_width="40"
+                android:layout_height="35"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzneun" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_6"
+                android:layout_width="40"
+                android:layout_height="35"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzneun" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/HorizontalLayout_Top_2"
+            android:layout_width="250"
+            android:layout_height="40"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="39dp">
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_8"
+                android:layout_width="wrap_content"
+                android:layout_height="40"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_9"
+                android:layout_width="wrap_content"
+                android:layout_height="40"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_10"
+                android:layout_width="wrap_content"
+                android:layout_height="40"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_11"
+                android:layout_width="wrap_content"
+                android:layout_height="40"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerT_12"
+                android:layout_width="wrap_content"
+                android:layout_height="40"
+                android:layout_weight="1"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_Left_2"
+            android:layout_width="40"
+            android:layout_height="250"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_7"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_8"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_9"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_10"
+                android:layout_width="wrap_content"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_11"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_12"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_Left_1"
+            android:layout_width="40"
+            android:layout_height="250"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_1"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzbube" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_2"
+                android:layout_width="wrap_content"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzkonig" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_3"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzkonig" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_4"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzzehn" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_5"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzzehn" />
+
+            <ImageView
+                android:id="@+id/handCardPlayerL_6"
+                android:layout_width="match_parent"
+                android:layout_height="40"
+                android:contentDescription="@string/ui_handcards"
+                android:src="@drawable/herzzehn" />
+
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/playerone"
-            android:layout_width="97dp"
-            android:layout_height="74dp"
-            android:layout_marginBottom="180dp"
+            android:layout_width="57dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="164dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/ui_attributes"
+            android:contentDescription="@string/ui_handcards"
             android:src="@drawable/playerone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.99"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/playertwo"
-            android:layout_width="84dp"
-            android:layout_height="68dp"
-            android:contentDescription="@string/ui_attributes"
+            android:layout_width="63dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:contentDescription="@string/ui_handcards"
             android:src="@drawable/playertwo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.274" />
+            app:layout_constraintVertical_bias="0.192" />
 
         <ImageView
             android:id="@+id/playertree"
-            android:layout_width="97dp"
-            android:layout_height="77dp"
-            android:layout_marginTop="52dp"
+            android:layout_width="63dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="80dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/ui_attributes"
+            android:contentDescription="@string/ui_handcards"
             android:src="@drawable/playertree"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/playerfour"
-            android:layout_width="86dp"
-            android:layout_height="74dp"
+            android:layout_width="52dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/ui_attributes"
+            android:contentDescription="@string/ui_handcards"
             android:src="@drawable/playerfour"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.275" />
+            app:layout_constraintVertical_bias="0.192" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardsLayout"
-            android:layout_width="215dp"
-            android:layout_height="306dp"
+            android:layout_width="185dp"
+            android:layout_height="259dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.535"
@@ -166,7 +502,7 @@
                 android:layout_width="46dp"
                 android:layout_height="77dp"
                 android:layout_weight="1"
-                android:contentDescription="@string/ui_attributes"
+                android:contentDescription="@string/ui_handcards"
                 android:scaleType="centerInside"
                 android:src="@drawable/herzzehn"
                 android:visibility="invisible"
@@ -181,7 +517,7 @@
                 android:layout_width="43dp"
                 android:layout_height="88dp"
                 android:layout_weight="1"
-                android:contentDescription="@string/ui_attributes"
+                android:contentDescription="@string/ui_handcards"
                 android:scaleType="centerInside"
                 android:src="@drawable/herzass"
                 android:visibility="invisible"
@@ -194,7 +530,7 @@
                 android:layout_width="51dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:contentDescription="@string/ui_attributes"
+                android:contentDescription="@string/ui_handcards"
                 android:scaleType="centerInside"
                 android:src="@drawable/karokonig"
                 android:visibility="invisible"
@@ -207,7 +543,7 @@
                 android:layout_width="48dp"
                 android:layout_height="103dp"
                 android:layout_weight="1"
-                android:contentDescription="@string/ui_attributes"
+                android:contentDescription="@string/ui_handcards"
                 android:scaleType="centerInside"
                 android:src="@drawable/kreuzass"
                 android:visibility="invisible"
@@ -234,42 +570,42 @@
                     android:id="@+id/handCard_1"
                     android:layout_width="52dp"
                     android:layout_height="99dp"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_2"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_3"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_4"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_5"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_6"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
             </TableRow>
@@ -282,40 +618,40 @@
                     android:id="@+id/handCard_7"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_8"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_9"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_10"
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_11"
                     android:layout_width="52dp"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
                 <ImageView
                     android:id="@+id/handCard_12"
                     android:layout_width="52dp"
-                    android:contentDescription="@string/ui_attributes"
+                    android:contentDescription="@string/ui_handcards"
                     android:src="@drawable/herzass" />
 
             </TableRow>

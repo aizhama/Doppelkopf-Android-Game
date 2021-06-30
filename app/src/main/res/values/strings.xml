@@ -9,12 +9,13 @@
 
     <string name="hello_first_fragment">Doppelkopf starten </string>
     <string name="hello_second_fragment"> Start Projekt. Arg: %1$s</string>
-    <string name="ui_attributes">ui_attributes</string>
+    <string name="ui_handcards">ui_attributes</string>
     <string name="start">Start</string>
     <string name="playerleft">playerLeft</string>
     <string name="playertop">playertop</string>
     <string name="playerright">playerRight</string>
     <string name="humanPlayer">humanPlayer</string>
+
     <string name="start_timer">start_timer</string>
     <string name="pcPlayer">pcPlayer</string>
 

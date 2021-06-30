@@ -24,7 +24,7 @@
         android:id="@+id/playerBtn1"
         android:layout_width="52dp"
         android:layout_height="match_parent"
-        android:contentDescription="@string/ui_attributes"
+        android:contentDescription="@string/ui_handcards"
         android:src="@drawable/playerfour" />
 
 
@@ -32,7 +32,7 @@
         android:id="@+id/playerBtn2"
         android:layout_width="52dp"
         android:layout_height="match_parent"
-        android:contentDescription="@string/ui_attributes"
+        android:contentDescription="@string/ui_handcards"
         android:src="@drawable/playerfour"
         tools:ignore="MissingConstraints" />
 
@@ -40,7 +40,7 @@
         android:id="@+id/playerBtn3"
         android:layout_width="52dp"
         android:layout_height="match_parent"
-        android:contentDescription="@string/ui_attributes"
+        android:contentDescription="@string/ui_handcards"
         android:src="@drawable/playerfour"
         tools:ignore="MissingConstraints" />
 

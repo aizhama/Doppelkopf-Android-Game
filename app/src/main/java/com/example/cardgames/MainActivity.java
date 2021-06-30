@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private final Player humanPlayer = new Player("Fabs");
@@ -24,22 +25,25 @@ public class MainActivity extends AppCompatActivity {
     private final Player playerR = new Player("Guljan");
     private final Stich stich = new Stich();
 
+    //Maps
+    Map<ImageView, Card> mapForPlayerL = new HashMap<ImageView, Card>();
+    Map<ImageView, Card> mapForPlayerT = new HashMap<ImageView, Card>();
+    Map<ImageView, Card> mapForPlayerR = new HashMap<ImageView, Card>();
+
     ImageView playerone, playertwo, playertree, playerfour, card_top, card_right, card_left, card_bottom;
     ImageView imgOfTheHandCard_1, imgOfTheHandCard_2, imgOfTheHandCard_3, imgOfTheHandCard_4, imgOfTheHandCard_5,
             imgOfTheHandCard_6, imgOfTheHandCard_7, imgOfTheHandCard_8, imgOfTheHandCard_9, imgOfTheHandCard_10,
             imgOfTheHandCard_11, imgOfTheHandCard_12;
 
-    ImageView imgHandCardPlayerL_1, imgHandCardPlayerL_2, imgHandCardPlayerL_3, imgHandCardPlayerL_4, imgHandCardPlayerL_5,
-            imgHandCardPlayerL_6, imgHandCardPlayerL_7, imgHandCardPlayerL_8, imgHandCardPlayerL_9, imgHandCardPlayerL_10,
-            imgHandCardPlayerL_11, imgHandCardPlayerL_12;
-
+    ImageView imgHandCardPlayerL_1, imgHandCardPlayerL_2, imgHandCardPlayerL_3;
+    ImageView imgHandCardPlayerT_1, imgHandCardPlayerT_2, imgHandCardPlayerT_3;
+    ImageView imgHandCardPlayerR_1, imgHandCardPlayerR_2, imgHandCardPlayerR_3;
 
     Button resultsFromPlayer;
     TextView startGame;
-    List<Card> listFromHandCards, listOf_UserTop, listOf_UserLeft, listOf_UserRight;
+    List<Card> listHandCardsHumanPlayer, listHandCardsPlayerL, listHandCardsPlayerT, listHandCardsPlayerR;
     final GameManager gManager = new GameManager(humanPlayer, playerL, playerT, playerR);
     TextView playerLeft, playerTop, playerRight;
-
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -70,28 +74,51 @@ public class MainActivity extends AppCompatActivity {
         imgOfTheHandCard_11 = (ImageView) findViewById(R.id.handCard_11);
         imgOfTheHandCard_12 = (ImageView) findViewById(R.id.handCard_12);
 
-        //imgHandCardPlayerL_1=(ImageView)findViewById(R.id.handCardPlayerL_1);
-        resultsFromPlayer = (Button) findViewById(R.id.pcPlayer);
+        imgHandCardPlayerL_1 = (ImageView) findViewById(R.id.handCardPlayerL_1);
+        imgHandCardPlayerL_1 = (ImageView) findViewById(R.id.handCardPlayerL_2);
+        imgHandCardPlayerL_1 = (ImageView) findViewById(R.id.handCardPlayerT_7);
 
+        imgHandCardPlayerR_1 = (ImageView) findViewById(R.id.handCardPlayerR_1);
+        imgHandCardPlayerR_2 = (ImageView) findViewById(R.id.handCardPlayerR_5);
+        imgHandCardPlayerR_3 = (ImageView) findViewById(R.id.handCardPlayerR_5);
+
+        imgHandCardPlayerT_1 = (ImageView) findViewById(R.id.handCardPlayerT_7);
+        imgHandCardPlayerT_2 = (ImageView) findViewById(R.id.handCardPlayerT_8);
+        imgHandCardPlayerT_3 = (ImageView) findViewById(R.id.handCardPlayerT_9);
+
+        resultsFromPlayer = (Button) findViewById(R.id.pcPlayer);
         startGame = (TextView) findViewById(R.id.start);
         playerLeft = (TextView) findViewById(R.id.playerLeft);
         playerTop = (TextView) findViewById(R.id.playerTop);
         playerRight = (TextView) findViewById(R.id.playerRight);
 
-        HashMap<ImageView, Card> mapForHumanPlayerCards = new HashMap<ImageView, Card>();
-        mapForHumanPlayerCards.put(imgOfTheHandCard_1, listFromHandCards.get(0));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_2, listFromHandCards.get(1));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_3, listFromHandCards.get(2));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_4, listFromHandCards.get(3));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_5, listFromHandCards.get(4));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_6, listFromHandCards.get(5));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_7, listFromHandCards.get(6));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_8, listFromHandCards.get(7));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_9, listFromHandCards.get(8));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_10, listFromHandCards.get(9));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_11, listFromHandCards.get(10));
-        mapForHumanPlayerCards.put(imgOfTheHandCard_12, listFromHandCards.get(11));
-        ImageView[] playerListBtn = new ImageView[3];
+        Map<ImageView, Card> mapForHumanPlayerCards = new HashMap<ImageView, Card>();
+        mapForHumanPlayerCards.put(imgOfTheHandCard_1, listHandCardsHumanPlayer.get(0));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_2, listHandCardsHumanPlayer.get(1));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_3, listHandCardsHumanPlayer.get(2));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_4, listHandCardsHumanPlayer.get(3));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_5, listHandCardsHumanPlayer.get(4));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_6, listHandCardsHumanPlayer.get(5));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_7, listHandCardsHumanPlayer.get(6));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_8, listHandCardsHumanPlayer.get(7));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_9, listHandCardsHumanPlayer.get(8));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_10, listHandCardsHumanPlayer.get(9));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_11, listHandCardsHumanPlayer.get(10));
+        mapForHumanPlayerCards.put(imgOfTheHandCard_12, listHandCardsHumanPlayer.get(11));
+        //ImageView[] playerListBtn = new ImageView[3];
+
+        //Map for PlayerL
+        mapForPlayerL.put(imgHandCardPlayerL_1, listHandCardsPlayerL.get(0));
+        mapForPlayerL.put(imgHandCardPlayerL_2, listHandCardsPlayerL.get(1));
+        mapForPlayerL.put(imgHandCardPlayerL_3, listHandCardsPlayerL.get(2));
+
+        mapForPlayerT.put(imgHandCardPlayerT_1, listHandCardsPlayerT.get(0));
+        mapForPlayerT.put(imgHandCardPlayerT_2, listHandCardsPlayerT.get(0));
+        mapForPlayerT.put(imgHandCardPlayerT_3, listHandCardsPlayerT.get(0));
+
+        mapForPlayerR.put(imgHandCardPlayerR_1, listHandCardsPlayerR.get(0));
+        mapForPlayerR.put(imgHandCardPlayerR_2, listHandCardsPlayerR.get(1));
+        mapForPlayerR.put(imgHandCardPlayerR_3, listHandCardsPlayerR.get(2));
 
         playCards();
 
@@ -99,6 +126,28 @@ public class MainActivity extends AppCompatActivity {
         Collections.addAll(listOfImagesFromCards, imgOfTheHandCard_1, imgOfTheHandCard_2, imgOfTheHandCard_3, imgOfTheHandCard_4,
                 imgOfTheHandCard_5, imgOfTheHandCard_6, imgOfTheHandCard_7, imgOfTheHandCard_8, imgOfTheHandCard_9,
                 imgOfTheHandCard_10, imgOfTheHandCard_11, imgOfTheHandCard_12);
+
+        //Initilize Cards for PlayerL
+        List<ImageView> imgHandCardsPlayerL = new ArrayList<>();
+        Collections.addAll(imgHandCardsPlayerL, imgHandCardPlayerL_1, imgHandCardPlayerL_2, imgHandCardPlayerL_3);
+        for (ImageView imgCard : imgHandCardsPlayerL) {
+            Card cardPlayerL = mapForPlayerL.get(imgCard);
+            imgCard.setImageResource(cardPlayerL.getResId());
+        }
+        //Initilize Cards for PlayerT
+        List<ImageView> imgHandCardsPlayerT = new ArrayList<>();
+        Collections.addAll(imgHandCardsPlayerT, imgHandCardPlayerT_1, imgHandCardPlayerT_2, imgHandCardPlayerT_3);
+        for (ImageView imgCard : imgHandCardsPlayerT) {
+            Card cardPlayerT = mapForPlayerT.get(imgCard);
+            imgCard.setImageResource(cardPlayerT.getResId());
+        }
+        //Initilize Cards for PlayerR
+        List<ImageView> imgHandCardsPlayerR = new ArrayList<>();
+        Collections.addAll(imgHandCardsPlayerR, imgHandCardPlayerR_1, imgHandCardPlayerR_2, imgHandCardPlayerR_3);
+        for (ImageView imgCard : imgHandCardsPlayerR) {
+            Card cardPlayerR = mapForPlayerR.get(imgCard);
+            imgCard.setImageResource(cardPlayerR.getResId());
+        }
 
         for (ImageView btnHandCard : listOfImagesFromCards) {
             Card card = mapForHumanPlayerCards.get(btnHandCard);
@@ -127,10 +176,10 @@ public class MainActivity extends AppCompatActivity {
         List<Card> deckList = new ArrayList<>();
         StackList deckOfBlatt = new StackList(deckList);
         deckOfBlatt.kartenAufteilen(humanPlayer, playerL, playerT, playerR);
-        listFromHandCards = humanPlayer.getDeckOfPlayCards();
-        listOf_UserTop = playerL.getDeckOfPlayCards();
-        listOf_UserLeft = playerT.getDeckOfPlayCards();
-        listOf_UserRight = playerR.getDeckOfPlayCards();
+        listHandCardsHumanPlayer = humanPlayer.getDeckOfPlayCards();
+        listHandCardsPlayerL = playerL.getDeckOfPlayCards();
+        listHandCardsPlayerT = playerT.getDeckOfPlayCards();
+        listHandCardsPlayerR = playerR.getDeckOfPlayCards();
         System.out.println(humanPlayer.showPlayerCards() + humanPlayer.getGamerName());
         System.out.println(playerL.showPlayerCards() + playerL.getGamerName());
         System.out.println(playerT.showPlayerCards() + playerT.getGamerName());
@@ -155,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
                     card_top.setImageResource(kartenWerdenAusgespieltPlayerT.getResId());
                     card_top.setVisibility(View.VISIBLE);
                     stich=gManager.playerPlayedACard(playerT, kartenWerdenAusgespieltPlayerT);
+
                 } else if (gManager.getCurrentPlayer().equals(playerR)) {
                     Card kartenWerdenAusgespieltPlayerR = playerR.bedienen();
                     card_right.setImageResource(kartenWerdenAusgespieltPlayerR.getResId());
@@ -164,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if(stich!=null && stich.complete()){
                     Card hiddenPlayedCard_1= stich.getCardFirst();
-
                     // Der Stich ist vollständig!!! alle Karten abräumen?
                     // Timer starten, zum wegräumen?
                 }
