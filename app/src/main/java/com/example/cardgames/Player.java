@@ -43,6 +43,7 @@ public class Player {
         return deckOfPlayCards;
     }
 
+    //ToDo: Funktioniert nicht
     @RequiresApi(api = Build.VERSION_CODES.N)
     public List<Card> checkValidityOfTheCards(List<Card> anzahlDerAusgespieltenKartenInDerRunde) {
         List<Card> listWithAValidCards = new ArrayList<>();
@@ -95,6 +96,7 @@ public class Player {
         return listWithAValidCards;
     }
 
+    //ToDo: Funktioniert nicht
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Card bedienen() {
         List<Card> stichList = stich.getAllCards();

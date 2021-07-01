@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private final Player playerL = new Player("Aida");
     private final Player playerT = new Player("Aigul");
     private final Player playerR = new Player("Guljan");
-    private final Stich stich = new Stich();
 
     //Maps for Player cards
     Map<ImageView, Card> mapForHumanPlayer = new HashMap<ImageView, Card>();
@@ -65,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     final GameManager gManager = new GameManager(humanPlayer, playerL, playerT, playerR);
 
+    Stich stich = new Stich();
     //@SuppressLint("CutPasteId")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -209,37 +209,37 @@ public class MainActivity extends AppCompatActivity {
         playCards();
 
         //Initilize Cards for PlayerL
-        List<ImageView> imgHandCardsPlayerL = new ArrayList<>();
-        Collections.addAll(imgHandCardsPlayerL,
+        List<ImageView> listWithImgHandCardsPlayerL = new ArrayList<>();
+        Collections.addAll(listWithImgHandCardsPlayerL,
                 imgHandCardPlayerL_1, imgHandCardPlayerL_2, imgHandCardPlayerL_3,
                 imgHandCardPlayerL_4, imgHandCardPlayerL_5, imgHandCardPlayerL_6,
                 imgHandCardPlayerL_7, imgHandCardPlayerL_8, imgHandCardPlayerL_9,
                 imgHandCardPlayerL_10, imgHandCardPlayerL_11, imgHandCardPlayerL_12);
-        for (ImageView imgCard : imgHandCardsPlayerL) {
+        for (ImageView imgCard : listWithImgHandCardsPlayerL) {
             Card cardPlayerL = mapForPlayerL.get(imgCard);
             assert cardPlayerL != null;
             imgCard.setImageResource(cardPlayerL.getResId());
         }
         //Initilize Cards for PlayerT
-        List<ImageView> imgHandCardsPlayerT = new ArrayList<>();
-        Collections.addAll(imgHandCardsPlayerT,
+        List<ImageView> listWithImgHandCardsPlayerT = new ArrayList<>();
+        Collections.addAll(listWithImgHandCardsPlayerT,
                 imgHandCardPlayerT_1, imgHandCardPlayerT_2, imgHandCardPlayerT_3,
                 imgHandCardPlayerT_4, imgHandCardPlayerT_5, imgHandCardPlayerT_6,
                 imgHandCardPlayerT_7, imgHandCardPlayerT_8, imgHandCardPlayerT_9,
                 imgHandCardPlayerT_10, imgHandCardPlayerT_11, imgHandCardPlayerT_12);
-        for (ImageView imgCard : imgHandCardsPlayerT) {
+        for (ImageView imgCard : listWithImgHandCardsPlayerT) {
             Card cardPlayerT = mapForPlayerT.get(imgCard);
             assert cardPlayerT != null;
             imgCard.setImageResource(cardPlayerT.getResId());
         }
         //Initilize Cards for PlayerR
-        List<ImageView> imgHandCardsPlayerR = new ArrayList<>();
-        Collections.addAll(imgHandCardsPlayerR,
+        List<ImageView> listWithImgHandCardsPlayerR = new ArrayList<>();
+        Collections.addAll(listWithImgHandCardsPlayerR,
                 imgHandCardPlayerR_1, imgHandCardPlayerR_2, imgHandCardPlayerR_3,
                 imgHandCardPlayerR_4, imgHandCardPlayerR_5, imgHandCardPlayerR_6,
                 imgHandCardPlayerR_7, imgHandCardPlayerR_8, imgHandCardPlayerR_9,
                 imgHandCardPlayerR_10, imgHandCardPlayerR_11, imgHandCardPlayerR_12);
-        for (ImageView imgCard : imgHandCardsPlayerR) {
+        for (ImageView imgCard : listWithImgHandCardsPlayerR) {
             Card cardPlayerR = mapForPlayerR.get(imgCard);
             assert cardPlayerR != null;
             imgCard.setImageResource(cardPlayerR.getResId());
@@ -297,8 +297,6 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
-
-                Stich stich = null;
                 if (gManager.getCurrentPlayer().equals(playerL)) {
                     Card kartenWerdenAusgespieltPlayerL = playerL.bedienen();
                     card_left.setImageResource(kartenWerdenAusgespieltPlayerL.getResId());
@@ -319,7 +317,9 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (stich != null && stich.complete()) {
-                    Card hiddenPlayedCard_1 = stich.getCardFirst();
+                    /*for(ImageView clickedBtn: )
+                    if()
+                    Card hiddenPlayedCard_1 = stich.getCardFirst();*/
                     // Der Stich ist vollständig!!! alle Karten abräumen?
                     // Timer starten, zum wegräumen?
                 }
